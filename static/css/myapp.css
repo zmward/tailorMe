@@ -1,0 +1,14 @@
+/* line 1, ../sass/_main.scss */
+.colorful {
+  color: #bb8833;
+}
+
+/* line 6, ../sass/_main.scss */
+.btn .fa {
+  padding-right: 0.5em;
+}
+
+/* line 11, ../sass/_main.scss */
+.msg_content {
+  white-space: pre-wrap;
+}
