@@ -284,9 +284,7 @@ db.Measure.ankle.on_delete = "SET NULL"
 
 db.define_table('Store',
                 Field('Store_Name'),
-                Field('Street'),
-                Field('City'),
-                Field('St'),
+            
                 )
 
 
