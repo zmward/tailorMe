@@ -283,16 +283,39 @@ db.Measure.ankle.on_delete = "SET NULL"
 
 
 db.define_table('Store',
-                Field('Name'),
+                Field('Store_Name'),
                 Field('Street'),
                 Field('City'),
                 Field('St'),
-                Field('review_id'),
                 )
 
 
 db.define_table('User_review',
                 Field('author', db.auth_user, default=auth.user_id ),
                 Field('Store', 'reference Store'),
+                Field('Tops', 'boolean', default=False),
+                Field('FT', label='Fit', requires=IS_IN_SET(['1', '2', '3', '4', '5']), default=3),
+                Field('CT', label='Cut', requires=IS_IN_SET(['1', '2', '3', '4', '5']), default=3),
+                Field('QT', label='Quality', requires=IS_IN_SET(['1', '2', '3', '4', '5']), default=3),
+                Field('Bottoms', 'boolean', default=False),
+                Field('FB', label='Fit', requires=IS_IN_SET(['1', '2', '3', '4', '5']), default=3),
+                Field('CB', label='Cut', requires=IS_IN_SET(['1', '2', '3', '4', '5']), default=3),
+                Field('QB', label='Quality', requires=IS_IN_SET(['1', '2', '3', '4', '5']), default=3),
+                Field('Dress', 'boolean', default=False),
+                Field('FD', label='Fit', requires=IS_IN_SET(['1', '2', '3', '4', '5']), default=3),
+                Field('CD', label='Cut', requires=IS_IN_SET(['1', '2', '3', '4', '5']), default=3),
+                Field('QD', label='Quality', requires=IS_IN_SET(['1', '2', '3', '4', '5']), default=3),
+                Field('Shoes', 'boolean', default=False),
+                Field('Outerwear', 'boolean', default=False),
+                Field('Intimates', 'boolean', default=False),
+
+                Field('Fit', requires=IS_IN_SET(['1', '2', '3', '4', '5']), default=3),
+                Field('Cut', requires=IS_IN_SET(['1', '2', '3', '4', '5']), default=3),
+                Field('Quality', requires=IS_IN_SET(['1', '2', '3', '4', '5']), default=3),
                 Field('review', 'text'),
+                Field('This_is_image', 'boolean', default=False),
                 )
+
+
+
+db.User_review.author.readable = db.User_review.author.writable= False
