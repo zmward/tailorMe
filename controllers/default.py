@@ -112,13 +112,21 @@ def tailor_you():
 
     return dict(form=form)
 
-def Store():
-    form = SQLFORM(db.Store)
+def add_store():
+    form = SQLFORM(db.store)
     if form.vars.accepted:
         session.flash = "Thank you!"
-        redirect(URL('default', index()))
+        redirect(URL('default', 'Stores'))
 
     return dict(form=form)
+    
+def Stores():
+    store_list = db(db.store).select()
+
+    add_button=A(' Create New Store', _class='btn btn-success fa fa-plus',
+                                             _href=URL('default', 'add_store'))
+
+    return dict(store_list=store_list, add_button=add_button)    
 
 
 def User_review():
