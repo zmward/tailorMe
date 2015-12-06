@@ -1,2 +1,11 @@
 {{extend 'layout.html'}}
-        {{=form}}
+
+        <h1>hello</h1>
+
+<ul>
+  {{for store in store_list:}}
+  <li>{{=A(store.store_name, _href=URL('default', 'index' ))}} this</li>
+  {{pass}}
+</ul>
+
+{{=add_button}}
