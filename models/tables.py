@@ -37,6 +37,8 @@ db.define_table('store',
                 Field('store_name', required=True),
 )
 
+db.store.id.readable = db.store.id.writable = False
+db.store.store_author.readable = db.store.store_author.writeable = False
 
 db.define_table('review',
                 Field('author', db.auth_user, default=auth.user_id ),
@@ -64,7 +66,8 @@ db.define_table('review',
                 Field('This_is_image', 'boolean', default=False),
 )
 
-
+db.review.id.readable = db.review.id.writable = False
+db.review.author.readable = db.review.author.writeable = False
 db.review.store_id.on_delete = "SET NULL"
 
 
@@ -78,42 +81,26 @@ db.review.store_id.on_delete = "SET NULL"
 
 
 
-db.define_table('Measure',
-                Field('author'),
-                Field('height', requires=IS_IN_SET(['petite', 'regular', 'tall', '4', '5', '6', '7'])),
-                Field('head', requires=IS_IN_SET(['petite', 'regular', 'tall', '4', '5', '6', '7'])),
-                Field('neck', requires=IS_IN_SET(['petite', 'regular', 'tall', '4', '5', '6', '7'])),
-                Field('chest', requires=IS_IN_SET(['petite', 'regular', 'tall', '4', '5', '6', '7'])),
-                Field('waist', requires=IS_IN_SET(['petite', 'regular', 'tall', '4', '5', '6', '7'])),
-                Field('shoulder', requires=IS_IN_SET(['petite', 'regular', 'tall', '4', '5', '6', '7'])),
-                Field('hip', requires=IS_IN_SET(['petite', 'regular', 'tall', '4', '5', '6', '7'])),
-                Field('wrist', requires=IS_IN_SET(['petite', 'regular', 'tall', '4', '5', '6', '7'])),
-                Field('biceps', requires=IS_IN_SET(['petite', 'regular', 'tall', '4', '5', '6', '7'])),
-                Field('forearm', requires=IS_IN_SET(['petite', 'regular', 'tall', '4', '5', '6', '7'])),
-                Field('arm_length', requires=IS_IN_SET(['petite', 'regular', 'tall', '4', '5', '6', '7'])),
-                Field('inseam', requires=IS_IN_SET(['petite', 'regular', 'tall', '4', '5', '6', '7'])),
-                Field('thigh', requires=IS_IN_SET(['petite', 'regular', 'tall', '4', '5', '6', '7'])),
-                Field('calf', requires=IS_IN_SET(['petite', 'regular', 'tall', '4', '5', '6', '7'])),
-                Field('ankle', requires=IS_IN_SET(['petite', 'regular', 'tall', '4', '5', '6', '7'])),
-                )
 
 
 db.define_table('Measure2',
                 Field('author', db.auth_user, default=auth.user_id ),
-                Field('height', requires=IS_IN_SET(['petite', 'regular', 'tall', '4', '5', '6', '7'])),
-                Field('head', requires=IS_IN_SET(['petite', 'regular', 'tall', '4', '5', '6', '7'])),
-                Field('neck', requires=IS_IN_SET(['petite', 'regular', 'tall', '4', '5', '6', '7'])),
-                Field('chest', requires=IS_IN_SET(['petite', 'regular', 'tall', '4', '5', '6', '7'])),
-                Field('waist', requires=IS_IN_SET(['petite', 'regular', 'tall', '4', '5', '6', '7'])),
-                Field('shoulder', requires=IS_IN_SET(['petite', 'regular', 'tall', '4', '5', '6', '7'])),
-                Field('hip', requires=IS_IN_SET(['petite', 'regular', 'tall', '4', '5', '6', '7'])),
-                Field('wrist', requires=IS_IN_SET(['petite', 'regular', 'tall', '4', '5', '6', '7'])),
-                Field('biceps', requires=IS_IN_SET(['petite', 'regular', 'tall', '4', '5', '6', '7'])),
-                Field('forearm', requires=IS_IN_SET(['petite', 'regular', 'tall', '4', '5', '6', '7'])),
-                Field('arm_length', requires=IS_IN_SET(['petite', 'regular', 'tall', '4', '5', '6', '7'])),
-                Field('inseam', requires=IS_IN_SET(['petite', 'regular', 'tall', '4', '5', '6', '7'])),
-                Field('thigh', requires=IS_IN_SET(['petite', 'regular', 'tall', '4', '5', '6', '7'])),
-                Field('calf', requires=IS_IN_SET(['petite', 'regular', 'tall', '4', '5', '6', '7'])),
-                Field('ankle', requires=IS_IN_SET(['petite', 'regular', 'tall', '4', '5', '6', '7'])),
+                Field('height', requires=IS_IN_SET(['less than 5 foot 4 inches', '5 foot 4 inches -> 5 foot 9 inches', 'taller than 5 food 9 inches'])),
+                Field('head', requires=IS_IN_SET(['< 56cm', '56 - 57cm', '> 57cm'])),
+                Field('neck', requires=IS_IN_SET(['< 15 inches', '15 - 16 inches', '> 16 inches'])),
+                Field('chest', requires=IS_IN_SET(['< 16 inches', '16 - 18 inches', '19 - 21 inches', '22 - 24 inches', '> 24 inches'])),
+                Field('waist', requires=IS_IN_SET(['< 24 inches', '24 - 26 inches', '27 - 29 inches', '30 - 32 inches', '33 - 35 inches', '> 35 inches'])),
+                Field('shoulder', requires=IS_IN_SET(['< 18 inches', '18 - 20.125 inches', '> 20.125 inches'])),
+                Field('hip', requires=IS_IN_SET(['< 38.625 inches', '38.625 - 41 inches ', '41 - 45 inches', '> 45 inches'])),
+                Field('wrist', requires=IS_IN_SET(['< 5.5 inches', '5.5 - 6.5 inches', '6.5 - 7.5 inches', '> 7.5 inches'])),
+                Field('biceps', requires=IS_IN_SET(['< 11.75 inches', '11.75 - 14 inches', '14 - 16.25 inches', '> 16.25 inches'])),
+                Field('forearm', requires=IS_IN_SET(['< 9.25 inches', '9.25 - 11 inches', '11 - 12.5 inches', '> 12.5'])),
+                Field('arm_length', requires=IS_IN_SET(['< 43cm', '43 - 46cm', '47 - 49.5cm', '> 49.5cm'])),
+                Field('inseam', requires=IS_IN_SET(['< 26.5 inches', '26.5 - 28 inches', '29 - 30 inches', '31 - 32 inches', '> 32 inches'])),
+                Field('thigh', requires=IS_IN_SET(['< 18 inches', '18 - 24 inches', '25 - 27 inches', '28 - 30 inches', '> 30 inches'])),
+                Field('calf', requires=IS_IN_SET(['< 11 inches', '11 - 13 inches', '14 - 16 inches', '17 - 19 inches', '> 19 inches'])),
+                Field('ankle', requires=IS_IN_SET(['< 7 inches', '7 - 8.25 inches', '8.5 - 9.75 inches', '10 - 11.5 inches', '> 11.5 inches', '6', '7'])),
                 )
 
+db.Measure2.id.readable = db.Measure2.id.writable = False
+db.Measure2.author.readable = db.Measure2.author.writable = False
