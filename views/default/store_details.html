@@ -1,0 +1,54 @@
+{{extend 'layout.html'}}
+<html>
+<body style="background-color: #9fbba8;">
+<div style="width:100%;">
+<div id="board_name" align="center" style="
+  background-color:#bbbbbb;
+  color:black;
+  padding:15px;
+  margin: 10px;
+  border-style:groove;
+  box-shadow: 5px 5px 5px;
+  border-radius:20px;">
+  <span><h1>{{=name}}
+      </span></h1>
+</div>
+</div>
+        <hr>
+
+{{if auth.user_id is None:}}
+
+<div id="main_login" align="left" style="margin:auto; padding:10px">
+{{=A('Sign Up', _class='btn btn-success', _href=URL('default', 'user', args=['register']))}}
+{{=A('Sign In', _class='btn btn-success', _href=URL('default', 'user', args=['login']))}}
+
+</div>
+
+{{else:}}
+<div align="left" style="margin: 1%;">{{=add_button}}{{=list_button}}</div>
+{{pass }}
+<hr>
+{{for review in review:}}
+
+<div style="width:100%;">
+<div id="post" style="float:left;
+  background-color:#58bb62;
+  color:black;
+  padding:15px;
+  margin: 10px;
+  border-style:groove;
+  box-shadow: 5px 5px 5px;
+  border-radius:20px;">
+  <span><h1>{{=review.store_id}}
+      {{=A('', _class='btn btn-info fa fa-pencil-square', _href=(URL('default', 'post_edit', args=[post.id, post.board_id]))) }}
+      {{=A('', _class='btn btn-danger fa fa-trash-o', _href=(URL('default', 'delete_post', args=[post.id, post.board_id]))) }}
+      </span></h1>
+    <hr>
+     <p>{{=form}}</p>
+</div>
+</div>
+{{pass}}
+</body>
+</html>
+
+
