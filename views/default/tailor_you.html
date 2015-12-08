@@ -1,2 +1,63 @@
 {{extend 'layout.html'}}
-        {{=form}}
+
+<html>
+<body style="background-color: #9fbba8;">
+
+<div id="header" style="padding-bottom: 10px;">
+  <h1 align="center">Talor this mo fo</h1>
+      </div>
+
+{{if auth.user_id is None:}}
+
+
+<div id="main_login" align="left" style="margin:auto; padding:10px">
+{{=A('Sign Up', _class='btn btn-success', _href=URL('default', 'user', args=['register']))}}
+{{=A('Sign In', _class='btn btn-success', _href=URL('default', 'user', args=['login']))}}
+
+</div>
+{{else:}}
+        <div style="padding:10px;">
+        {{=add_button}}
+        </div>
+{{pass}}
+
+{{for Measure2 in Measure_list:}}
+
+<div style="width:100%;">
+<div id="rentboard" style="float:left;
+  background-color:#3ebb71;
+  color:black;
+  padding:15px;
+  margin: 10px;
+  border-style:groove;
+  box-shadow: 5px 5px 5px;
+  border-radius:20px;">
+  <span><h1>Tailor You
+      </span></h1>
+    <hr>
+    <p>Height: {{=Measure2.height}}</p>
+    <p>Head: {{=Measure2.head}}</p>
+    <p>Neck {{=Measure2.neck}}</p>
+    <p>Chest: {{=Measure2.chest}}</p>
+    <p>Waist: {{=Measure2.waist}}</p>
+  <p>Shoulder: {{=Measure2.shoulder}}</p>
+  <p>Hip: {{=Measure2.hip}}</p>
+  <p>Wrist: {{=Measure2.wrist}}</p>
+  <p>Biceps: {{=Measure2.biceps}}</p>
+  <p>Forearm: {{=Measure2.forearm}}</p>
+  <p>Arm Length: {{=Measure2.arm_length}}</p>
+  <p>Inseam: {{=Measure2.inseam}}</p>
+  <p>Calf: {{=Measure2.calf}}</p>
+  <p>Ankle: {{=Measure2.ankle}}</p>
+
+    <p> New posts today</p>
+
+</div>
+</div>
+
+ {{pass}}
+
+
+</body>
+</html>
+
