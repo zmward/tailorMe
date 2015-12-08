@@ -1,0 +1,49 @@
+{{extend 'layout.html'}}
+
+<html>
+<body style="background-color: #9fbba8;">
+
+<div id="header" style="padding-bottom: 10px;">
+  <h1 align="center">this works!</h1>
+      </div>
+
+{{if auth.user_id is None:}}
+
+
+<div id="main_login" align="left" style="margin:auto; padding:10px">
+{{=A('Sign Up', _class='btn btn-success', _href=URL('default', 'user', args=['register']))}}
+{{=A('Sign In', _class='btn btn-success', _href=URL('default', 'user', args=['login']))}}
+
+</div>
+{{else:}}
+        <div style="padding:10px;">
+        {{=add_button}}
+        </div>
+{{pass}}
+
+{{for store in store_list:}}
+
+<div style="width:100%;">
+<div id="rentboard" style="float:left;
+  background-color:#3ebb71;
+  color:black;
+  padding:15px;
+  margin: 10px;
+  border-style:groove;
+  box-shadow: 5px 5px 5px;
+  border-radius:20px;">
+  <span><h1>{{=A(store.store_name, _href=URL('default', 'store_details', args=[store.id, store.store_name]))}}
+      {{=A('', _class='btn btn-info fa fa-pencil', _href=URL('default', 'board_edit', args=[store.id]))}}
+        {{=A('', _class='btn btn-danger fa fa-trash-o', _href=URL('default', 'delete_board', args=[store.id]))}}
+      </span></h1>
+    <hr>
+    <p> New posts today</p>
+
+</div>
+</div>
+
+ {{pass}}
+
+
+</body>
+</html>
