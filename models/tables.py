@@ -38,7 +38,7 @@ db.define_table('store',
 )
 
 db.store.id.readable = db.store.id.writable = False
-db.store.store_author.readable = db.store.store_author.writeable = False
+db.store.store_author.readable = db.store.store_author.writable = False
 
 db.define_table('review',
                 Field('author', db.auth_user, default=auth.user_id ),
@@ -67,7 +67,8 @@ db.define_table('review',
 )
 
 db.review.id.readable = db.review.id.writable = False
-db.review.author.readable = db.review.author.writeable = False
+db.review.author.readable = db.review.author.writable = False
+db.review.store_id.readable = db.review.store_id.writable = False
 db.review.store_id.on_delete = "SET NULL"
 
 
@@ -104,3 +105,19 @@ db.define_table('Measure2',
 
 db.Measure2.id.readable = db.Measure2.id.writable = False
 db.Measure2.author.readable = db.Measure2.author.writable = False
+
+
+#-------------------------------------
+# Databases for the messaging system
+#-------------------------------------
+
+db.define_table('people',
+    Field('user_id', db.auth_user, default=auth.user_id),
+    Field('name', required=True),
+    Field('description', 'text'),
+    )
+
+db.people.id.readable = False
+db.people.user_id.readable = False
+
+
