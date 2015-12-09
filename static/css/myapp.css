@@ -52,32 +52,44 @@ p {
 }
 
 /* Buttons */
-/* line 54, ../sass/_main.scss */
+/* line 53, ../sass/_main.scss */
+.btn {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  padding: 14px 24px;
+  border: 0 none;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin: 10px;
+}
+
+/* line 64, ../sass/_main.scss */
 .btn-primary {
   background: #bbbbbb;
   color: #ffffff;
 }
 
-/* line 59, ../sass/_main.scss */
+/* line 69, ../sass/_main.scss */
 .btn.outline {
   background: none;
   padding: 10px 20px;
 }
 
-/* line 64, ../sass/_main.scss */
+/* line 74, ../sass/_main.scss */
 .btn-primary.outline {
   border: 2px solid #bbbbbb;
   color: #269abc;
 }
 
 /* Navbar */
-/* line 71, ../sass/_main.scss */
+/* line 81, ../sass/_main.scss */
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
   color: #269abc;
   /*Sets the text hover color on navbar*/
 }
 
-/* line 75, ../sass/_main.scss */
+/* line 85, ../sass/_main.scss */
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active >
 a:hover, .navbar-default .navbar-nav > .active > a:focus {
   color: black;
@@ -86,29 +98,28 @@ a:hover, .navbar-default .navbar-nav > .active > a:focus {
 }
 
 /* Review div */
-/* line 83, ../sass/_main.scss */
-.recentreviews {
-  background-color: lightgrey;
+/* line 93, ../sass/_main.scss */
+.recent {
   background-size: 100%;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #fff), color-stop(100%, #FFFAFA));
   background-image: -moz-linear-gradient(#ffffff, #FFFAFA);
   background-image: -webkit-linear-gradient(#ffffff, #FFFAFA);
   background-image: linear-gradient(#ffffff, #fffafa);
-  color: black;
-  padding: 10px;
+  padding: 50px;
   margin: 20px;
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
   border-radius: 20px;
-  border: .5px solid #EBEBEB;
-  -moz-box-shadow: rgba(0, 0, 0, 0.1) 0 1px 2px 1px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0 1px 2px 1px;
+  border: 1px solid #EBEBEB;
+  -webkit-box-shadow: 0px 0px 17px 5px #c7c5c7;
+  -moz-box-shadow: 0px 0px 17px 5px #c7c5c7;
+  box-shadow: 0px 0px 17px 5px #c7c5c7;
   vertical-align: top;
   display: inline-block;
 }
 
-/* line 103, ../sass/_main.scss */
-div.image {
+/* line 112, ../sass/_main.scss */
+.image {
   float: left;
   width: 100px;
   height: 50px;
@@ -116,11 +127,13 @@ div.image {
   border: 3px solid #269abc;
 }
 
-/* line 111, ../sass/_main.scss */
-div.review {
+/* line 120, ../sass/_main.scss */
+.review {
   border: 1px solid black;
   float: right;
   width: 200px;
   height: 50px;
   margin: 10px;
 }
+
+/* */

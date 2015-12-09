@@ -19,17 +19,10 @@
     <div>
       <ul class="nav navbar-nav">
         <li class="active"><a href="index">Home</a></li>
-        <li><a href="#">Profile</a></li>
-        <li><a href="#">Messages</a></li>
+        <li>{{=A('Profile', _href=URL('default', 'profile', user_signature=True))}}</li>
+        <li><a href="people">Messages</a></li>
       </ul>
         <ul class="nav navbar-nav navbar-right">
-
-     <!--   <li><a href="user/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li> -->
-    <!--    <li><a href="user/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>-->
-
-
-
-
         <li><a href="user/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
       </ul>
     </div>
@@ -55,7 +48,7 @@
 
     {{else:}}
 <div id="doreview">
-{{=A('Do a review', _class='btn btn-primary btn-lg outline', _href=URL('default', 'doreview'))}}
+{{=A('Do a review', _class='btn btn-primary btn-lg outline', _href=URL('default', 'show_store'))}}
 </div>
 
 
@@ -66,7 +59,7 @@
 
 
 
- <div class="recentreviews">
+ <div class="recent">
      <div class="image">Image here</div>
      <div class="review"><span>Review of store</span></div>
 </div>

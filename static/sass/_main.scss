@@ -1,5 +1,5 @@
 .colorful {
-  color: $clrHilight;
+  color: #bb8833;
 }
 
 .btn {
@@ -50,6 +50,16 @@ p {
 
 
 /* Buttons */
+.btn {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    padding: 14px 24px;
+    border: 0 none;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: 10px;
+}
 
 .btn-primary {
   background: #bbbbbb;
@@ -80,27 +90,26 @@ background-color: #030033;
 
 /* Review div */
 
-.recentreviews {
-  background-color: lightgrey;
+.recent {
   background-size: 100%;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #fff), color-stop(100%, #FFFAFA));
   background-image: -moz-linear-gradient(#ffffff, #FFFAFA);
   background-image: -webkit-linear-gradient(#ffffff, #FFFAFA);
   background-image: linear-gradient(#ffffff, #FFFAFA);
-  color: black;
-  padding: 10px;
+  padding: 50px;
   margin: 20px;
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
   border-radius: 20px;
-  border: .5px solid #EBEBEB;
-  -moz-box-shadow: rgba(0, 0, 0, 0.1) 0 1px 2px 1px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0 1px 2px 1px;
+  border: 1px solid #EBEBEB;
+  -webkit-box-shadow: 0px 0px 17px 5px rgba(199,197,199,1);
+  -moz-box-shadow: 0px 0px 17px 5px rgba(199,197,199,1);
+  box-shadow: 0px 0px 17px 5px rgba(199,197,199,1);
   vertical-align: top;
   display: inline-block;
 }
 
-div.image {
+.image {
     float: left;
     width: 100px;
     height: 50px;
@@ -108,10 +117,13 @@ div.image {
     border: 3px solid #269abc;
 }
 
-div.review {
+.review {
     border: 1px solid black;
     float: right;
     width: 200px;
     height: 50px;
     margin: 10px;
 }
+
+/* */
+
