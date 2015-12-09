@@ -84,14 +84,33 @@ def store_details():
                     _href=URL('default', 'show_store'))
     review = db(db.review.store_id == store.id).select()
     add_button = A(' Create New Post', _class='btn btn-success fa fa-plus',
-                                             _href=URL('default', 'add_review', args=[store.id]))
+                                             _href=URL('default', 'do_review', args=[store.id]))
     return dict(form=form, review=review, list_button=list_button, add_button=add_button, name=name)
 
 def add_review():
     store = db.store(request.args(0))
     if store is None:
         session.flash = T("There is no such Store")
-        redirct(URL('default', 'index'))
+        redirect(URL('default', 'index'))
+
+    form = SQLFORM(db.review)
+    form.vars.store_id = store.id
+
+    if form.process().accepted:
+        form.vars.store_id = store.id
+        session.flash = T("You review has been created!")
+        redirect(URL('default', 'store_details', args=[store.id]))
+
+    back_button = A(' Cancel', _class='btn btn-warning fa fa-times',
+                    _href=URL('default', 'store_details', args=[store.id]))
+
+    return dict(form=form, back_button=back_button)
+
+def doreview():
+    store = db.store(request.args(0))
+    if store is None:
+        session.flash = T("There is no such Store")
+        redirect(URL('default', 'index'))
 
     form = SQLFORM(db.review)
     form.vars.store_id = store.id
@@ -107,46 +126,60 @@ def add_review():
     return dict(form=form, back_button=back_button)
 
 
+#------------------------
+# Delete and Edit
+#------------------------
 
-#------------
+def store_edit():
+    store = db.store(request.args(0))
+    if store is None:
+        session.flash = T('No such Store')
+        redirect(URL('default', 'show_store'))
+    form = SQLFORM(db.store, record=board)
+    if form.process(onvalidation=check_complete).accepted:
+        session.flash = T('The data was edited')
+        redirect(URL('default', 'store_details', args=[store.id]))
+    edit_button = A(' View', _class='btn btn-warning',
+                    _href=URL('default', 'store_details', args=[store.id]))
+    return dict(form=form, edit_button=edit_button)
+
+def review_edit():
+    review = db.review(request.args(0))
+    store = db.store(request.args(1))
+
+    if review is None:
+        session.flash = T('An error has Occurred')
+        redirect(URL('default', 'show_stores'))
+    form = SQLFORM(db.review, record=post)
+    if form.process(onvalidation=check_complete_post).accepted:
+        session.flash = T('The review was edited!')
+        redirect(URL('default', 'store_details', args=[store.id]))
+    back_button = A(' Back', _class='btn btn-warning fa fa-reply',
+                    _href=URL('default', 'store_details', args=[store.id]))
+    return dict(form=form, back_button=back_button)
 
 
 
-
-
-def delete_post():
-    db(db.post.id == request.args(0)).delete()
-    board = db.board(request.args(1))
+def delete_review():
+    db(db.review.id == request.args(0)).delete()
+    store = db.store(request.args(1))
     session.flash = "Deleted"
-    redirect(URL('default', 'board_details', args=[board.id]))
+    redirect(URL('default', 'store_details', args=[store.id]))
 
-def delete_board():
-    db(db.board.id == request.args(0)).delete()
-    session.flash = "Board Deleted"
+def delete_store():
+    db(db.store.id == request.args(0)).delete()
+    session.flash = "Store Deleted"
     redirect(URL('default', 'index'))
 #------------
 # this is being usd to clear all tables then editing them
 #------------
 def reset():
+    db(db.person.id > 0).delete()
     db(db.board.id > 0).delete()
     db(db.post.id > 0).delete()
     db(db.store.id > 0).delete()
     db(db.Measure.id > 0).delete()
-    db(db.height_table.id > 0).delete()
-    db(db.head_table.id > 0).delete()
-    db(db.neck_table.id > 0).delete()
-    db(db.chest_table.id > 0).delete()
-    db(db.waist_table.id > 0).delete()
-    db(db.sh_table.id > 0).delete()
-    db(db.hip_table.id > 0).delete()
-    db(db.wrist_table.id > 0).delete()
-    db(db.biceps_table.id > 0).delete()
-    db(db.forearm_table.id > 0).delete()
-    db(db.arm_table.id > 0).delete()
-    db(db.inseam_table.id > 0).delete()
-    db(db.thigh_table.id > 0).delete()
-    db(db.calf_table.id > 0).delete()
-    db(db.ankle_table.id > 0).delete()
+    db(db.Measure2.id > 0).delete()
     db(db.review.id > 0).delete()
 
     redirect(URL('default', 'index'))
