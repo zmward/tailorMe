@@ -8,7 +8,15 @@
 ## - download is for downloading files uploaded in the db (does streaming)
 #########################################################################
 
+@auth.requires_signature()
+@auth.requires_login()
+def profile():
+    measure_form = SQLFORM(db.Measure2)
+    if measure_form.vars.accepted:
+        session.flash = "Thank you!"
+        redirect(URL('default', index()))
 
+    return dict(measure_form=measure_form)
 
 def index():
     store_list = db(db.store).select()
@@ -17,6 +25,24 @@ def index():
     fit_button =  A(' Create New Fit', _class='btn btn-info fa fa-plus',
                                              _href=URL('default', 'tailor_you'))
     return dict(store_list=store_list, fit_button=fit_button, add_button=add_button)
+
+@auth.requires_login()
+def people():
+    """
+    Gives the person a table displaying all the people, to search.
+    """
+    db.people.name.label = "Name"
+    # Creates a list of other people, other than myself.
+    q = (db.people.id != auth.user_id)
+    links = [dict(header='Click to chat',
+                 body = lambda r: A(I(_class='fa fa-comments'), 'Chat', _class='btn btn-success',
+                                    _href=URL('default', 'chat', args=[r.user_id])))]
+    grid = SQLFORM.grid(q,
+                        links=links,
+                        editable=False,
+                        details=False,
+                        csv=False)
+    return dict(grid=grid)
 
 
 #--------------------------------------------
@@ -50,14 +76,15 @@ def check_complete(form):
 #--------------------------------
 
 def add_store():
+    store_list = db(db.store).select()
     form = SQLFORM(db.store)
     if form.process(onvalidation=check_completea).accepted:
         session.flash=T("Success!")
-        redirect(URL('show_store'))
+        redirect(URL('add_store'))
 
     back_button = A(' Back', _class='btn bth-info fa fa-reply', _href=URL('default', 'show_store'))
 
-    return dict(form=form, back_button=back_button)
+    return dict(store_list=store_list, form=form, back_button=back_button)
 
 def show_store():
     store_list = db(db.store).select()
@@ -84,29 +111,12 @@ def store_details():
                     _href=URL('default', 'show_store'))
     review = db(db.review.store_id == store.id).select()
     add_button = A(' Create New Post', _class='btn btn-success fa fa-plus',
-                                             _href=URL('default', 'do_review', args=[store.id]))
+                                             _href=URL('default', 'doreview', args=[store.id]))
     return dict(form=form, review=review, list_button=list_button, add_button=add_button, name=name)
 
-def add_review():
-    store = db.store(request.args(0))
-    if store is None:
-        session.flash = T("There is no such Store")
-        redirect(URL('default', 'index'))
 
-    form = SQLFORM(db.review)
-    form.vars.store_id = store.id
 
-    if form.process().accepted:
-        form.vars.store_id = store.id
-        session.flash = T("You review has been created!")
-        redirect(URL('default', 'store_details', args=[store.id]))
-
-    back_button = A(' Cancel', _class='btn btn-warning fa fa-times',
-                    _href=URL('default', 'store_details', args=[store.id]))
-
-    return dict(form=form, back_button=back_button)
-
-def doreview():
+def doreview(): #this is the same as add_review
     store = db.store(request.args(0))
     if store is None:
         session.flash = T("There is no such Store")
@@ -178,7 +188,7 @@ def reset():
     db(db.board.id > 0).delete()
     db(db.post.id > 0).delete()
     db(db.store.id > 0).delete()
-    db(db.Measure.id > 0).delete()
+    db(db.people.id > 0).delete()
     db(db.Measure2.id > 0).delete()
     db(db.review.id > 0).delete()
 
