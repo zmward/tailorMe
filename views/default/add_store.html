@@ -1,2 +1,74 @@
 {{extend 'layout.html'}}
-        {{=form}}
+
+<center>
+
+<div class="container">
+  <div class="jumbotron">
+    <h1>Add Store</h1>
+    <p></p>
+  </div>
+  <p>Add stores, view stores, and add reviews!</p>
+  <p></p>
+</div>
+
+{{if auth.user_id is None:}}
+
+       {{else:}}
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="index">Home</a></li>
+        <li>{{=A('Profile', _href=URL('default', 'profile', user_signature=True))}}</li>
+        <li><a href="people">Messages</a></li>
+      </ul>
+        <ul class="nav navbar-nav navbar-right">
+
+        <li><a href="user/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    {{pass}}
+
+   <div id="write_button_area">
+  <a class="btn btn-info" id="button_write"><i class="fa fa-plus"></i> Create </a>
+</div>
+
+  <div id="cancel_button" style="display: none">
+        <a class="btn btn-danger" id="button_cancel"><i class="fa fa-times"> Cancel </i></a>
+</div>
+
+  <div id="form_area" style="display: none">
+      {{=form}}
+
+  </div>
+
+
+
+{{for store in store_list:}}
+
+{{=A(store.store_name, _href=URL('default', 'store_details', args=[store.id, store.store_name]))}}
+
+</center>
+
+{{pass}}
+
+<script>
+
+      $("#button_write").click(function(e) {
+      $("#cancel_button").show();
+      $("#form_area").slideDown();
+    $("#write_button_area").hide();
+  });
+
+
+    $("#cancel_button").click(function(e) {
+        $("#cancel_button").hide();
+    $("#form_area").slideUp();
+    $("#write_button_area").show();
+  });
+
+
+</script>
