@@ -1,49 +1,67 @@
 {{extend 'layout.html'}}
 
-<html>
-<body style="background-color: #9fbba8;">
+ <center>
 
-<div id="header" style="padding-bottom: 10px;">
-  <h1 align="center">I FUCKING WIN!</h1>
-      </div>
+<div class="container">
+  <div class="jumbotron">
+    <h1>tailorMe</h1>
+    <p>We hope to enables users to insert measurements, compare, decide, and ultimately make informed purchases of properly fitting attire, accessories, and more!</p>
+  </div>
+  <p>Feel free to look at reviews, message other users, or create your own profile!</p>
+  <p></p>
+</div>
 
 {{if auth.user_id is None:}}
 
+       {{else:}}
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="index">Home</a></li>
+        <li>{{=A('Profile', _href=URL('default', 'profile', user_signature=True))}}</li>
+        <li><a href="people">Messages</a></li>
+      </ul>
+        <ul class="nav navbar-nav navbar-right">
+        <li><a href="user/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
-<div id="main_login" align="left" style="margin:auto; padding:10px">
-{{=A('Sign Up', _class='btn btn-success', _href=URL('default', 'user', args=['register']))}}
-{{=A('Sign In', _class='btn btn-success', _href=URL('default', 'user', args=['login']))}}
-
-</div>
-{{else:}}
-        <div style="padding:10px;">
-        {{=add_button}} {{=fit_button}}
-        </div>
 {{pass}}
+</center>
 
-{{for store in store_list:}}
 
-<div style="width:100%;">
-<div id="rentboard" style="float:left;
-  background-color:#3ebb71;
-  color:black;
-  padding:15px;
-  margin: 10px;
-  border-style:groove;
-  box-shadow: 5px 5px 5px;
-  border-radius:20px;">
-  <span><h1>{{=A(store.store_name, _href=URL('default', 'store_details', args=[store.id, store.store_name]))}}
-      {{=A('', _class='btn btn-info fa fa-pencil', _href=URL('default', 'board_edit', args=[store.id]))}}
-        {{=A('', _class='btn btn-danger fa fa-trash-o', _href=URL('default', 'delete_board', args=[store.id]))}}
-      </span></h1>
-    <hr>
-    <p> New posts today</p>
 
-</div>
+<center>
+
+
+
+
+
+{{if auth.user_id is None:}}
+<div id="main_login">
+{{=A('Sign In', _class='btn btn-primary btn-lg outline', _href=URL('default', 'user', args=['login']))}}
+{{=A('Sign Up', _class='btn btn-primary btn-lg outline', _href=URL('default', 'user', args=['register']))}}
 </div>
 
- {{pass}}
+    {{else:}}
+<div id="doreview">
+{{=A('Do a review', _class='btn btn-primary btn-lg outline', _href=URL('default', 'add_store'))}}
+</div>
 
 
-</body>
-</html>
+ <h3>Recent reviews:</h3>
+
+
+ </center>
+
+
+
+ <div class="recent">
+     <div class="image">Image here</div>
+     <div class="review"><span>Review of store</span></div>
+</div>
+
+{{pass}}
