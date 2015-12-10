@@ -1,0 +1,37 @@
+{{extend 'layout.html'}}
+
+ <center>
+
+<div class="container">
+  <div class="jumbotron">
+    <h1>About Us</h1>
+
+  </div>
+
+</div>
+
+{{if auth.user_id is None:}}
+
+       {{else:}}
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div>
+      <ul class="nav navbar-nav">
+        <li><a href="index">Home</a></li>
+        <li>{{=A('Profile', _href=URL('default', 'profile', user_signature=True))}}</li>
+        <li><a href="people">Messages</a></li>
+          <li class="active"><a href="about">About Us</a></li>
+      </ul>
+        <ul class="nav navbar-nav navbar-right">
+        <li><a href="user/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+{{pass}}
+
+     <h1>What is tailorMe?</h1>
+     <p>Probability dictates that finding someone with the same body type is astronomically low. Unfortunately, major clothing companies not only generalize the sizes within their clothing lines, but within store to store as well. Consequently, when we, as customers, go shopping for something that fits us, we spend large amounts of time searching for clothes that fit our particular body type. This is where tailorMe comes in. tailorMe opens a space where people of all body types and personal styles can connect and share experiences with different stores and articles of clothing either through personal reviews, or by directly contacting those with similar interests.</p>
+     <h2>Mission Statement</h2>
+     <p> tailorMe connects people through similar interests. By creating a place where users can easily shop and find clothes tailored specifically to them, tailorMe eliminates precious time wasted searching for clothes that fit. With algorithms matching users to others with similar body proportions, users can collaborate and discover new aspects of clothing personally previously unheard of.</p>

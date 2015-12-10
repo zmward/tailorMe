@@ -15,12 +15,15 @@ def profile():
 
 
 def index():
-    store_list = db(db.store).select()
+    reviews = db(db.review).select()
     add_button = A(' Create New Store', _class='btn btn-success fa fa-plus',
-                                             _href=URL('default', 'add_store'))
-    fit_button =  A(' Create New Fit', _class='btn btn-info fa fa-plus',
-                                             _href=URL('default', 'tailor_you'))
-    return dict(store_list=store_list, fit_button=fit_button, add_button=add_button)
+        _href=URL('default', 'add_store'))
+    fit_button = A(' Create New Fit', _class='btn btn-info fa fa-plus',
+        href=URL('default', 'tailor_you'))
+    return dict(reviews=reviews, fit_button=fit_button, add_button=add_button)
+
+def aboutus():
+    return dict()
 
 
 #--------------------------------------------

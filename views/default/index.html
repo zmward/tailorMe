@@ -21,6 +21,7 @@
         <li class="active"><a href="index">Home</a></li>
         <li>{{=A('Profile', _href=URL('default', 'profile', user_signature=True))}}</li>
         <li><a href="people">Messages</a></li>
+          <li><a href="aboutus">About Us</a></li>
       </ul>
         <ul class="nav navbar-nav navbar-right">
         <li><a href="user/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
@@ -51,8 +52,32 @@
 {{=A('Write a review', _class='btn btn-primary btn-lg outline', _href=URL('default', 'show_store'))}}
 </div>
 
+  <h3>Recent reviews:</h3>
 
- <h3>Recent reviews:</h3>
+    {{for review in reviews:}}
+
+<div class="reviews">
+        <h2>Review</h2>
+        <h3>Tops</h3>
+        <p>Fit: {{=review.FT}}</p>
+        <p>Cut: {{=review.CT}}</p>
+        <p>Quality: {{=review.QT}}</p>
+        <h3>Bottoms</h3>
+        <p>Fit: {{=review.FB}}</p>
+        <p>Cut: {{=review.CB}}</p>
+        <p>Quality: {{=review.QB}}</p>
+        <h3>Dress</h3>
+        <p>Fit: {{=review.FD}}</p>
+        <p>Cut: {{=review.CD}}</p>
+        <p>Quality: {{=review.QD}}</p>
+        <h3>Intimates</h3>
+        <p>Fit: {{=review.Fit}}</p>
+        <p>Cut: {{=review.Cut}}</p>
+        <p>Quality: {{=review.Quality}}</p>
+        <h3>Comments: {{=review.review}}</h3>
+        <hr>
+            </div>
+{{pass}}
 
 
  </center>
@@ -60,8 +85,10 @@
 
 
  <div class="recent">
-     <div class="image">Image here</div>
-     <div class="review"><span>Review of store</span></div>
+     <div class="image">Image here</div>
+     <div class="review"><span>Review of store</span></div>
 </div>
+
+
 
 {{pass}}
