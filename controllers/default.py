@@ -156,25 +156,14 @@ def delete_store():
 # this is being usd to clear all tables then editing them
 #------------
 def reset():
+    db(db.person.id > 0).delete()
     db(db.board.id > 0).delete()
     db(db.post.id > 0).delete()
     db(db.store.id > 0).delete()
-    db(db.Measure.id > 0).delete()
-    db(db.height_table.id > 0).delete()
-    db(db.head_table.id > 0).delete()
-    db(db.neck_table.id > 0).delete()
-    db(db.chest_table.id > 0).delete()
-    db(db.waist_table.id > 0).delete()
-    db(db.sh_table.id > 0).delete()
-    db(db.hip_table.id > 0).delete()
-    db(db.wrist_table.id > 0).delete()
-    db(db.biceps_table.id > 0).delete()
-    db(db.forearm_table.id > 0).delete()
-    db(db.arm_table.id > 0).delete()
-    db(db.inseam_table.id > 0).delete()
-    db(db.thigh_table.id > 0).delete()
-    db(db.calf_table.id > 0).delete()
-    db(db.ankle_table.id > 0).delete()
+    db(db.people.id > 0).delete()
+    db(db.Measure2.id > 0).delete()
+    db(db.Measure.id >0).delete()
+    db(db.messages.id > 0).delete()
     db(db.review.id > 0).delete()
 
     redirect(URL('default', 'index'))
@@ -228,7 +217,7 @@ def people():
     # Creates a list of other people, other than myself.
     q = (db.people.id != auth.user_id)
     links = [dict(header='Click to chat',
-                 body = lambda r: A(I(_class='fa fa-comments'), 'Chat', _class='btn btn-success',
+                 body = lambda r: A(I(_class='fa fa-comments'), 'Chat', _class='btn btn-primary btn-lg outline',
                                     _href=URL('default', 'chat', args=[r.user_id])))]
     grid = SQLFORM.grid(q,
                         links=links,
@@ -245,6 +234,8 @@ def store_message(form):
 @auth.requires_login()
 def chat():
     """This page enables you to chat with another person."""
+    back_button = A(' Back', _class='btn btn-primary btn-lg outline',
+                    _href=URL('default', 'people', user_signature=True))
     # Let us read the record telling us who is the other person.
     other = db(db.people.user_id == request.args(0)).select().first()
     logger.info("I am %r, chatting with %r" % (auth.user_id, other))
@@ -283,7 +274,7 @@ def chat():
         redirect(URL('default', 'chat', args=[other.user_id]))
 
     title = "Chat with %s" % other.name
-    return dict(title=title, grid=grid, form=form)
+    return dict(title=title, grid=grid, form=form, back_button=back_button)
 
 
 def user():

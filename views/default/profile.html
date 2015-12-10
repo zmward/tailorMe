@@ -75,10 +75,10 @@ div.stack{
 
 <center>
     <div id="profile">
-        <div id="userstuff" class="stack"> <h3>Username</h3></div>
+        <div id="userstuff" class="stack"> <h3>{{=auth.user.first_name}} {{=auth.user.last_name}}</h3></div>
         <div id="userreview" class="stack"><h3>Your reviews:</h3>
         </div>
-        <div id="doreview" class="stack">{{=A('Do a review', _class='btn btn-primary btn-lg outline', _href=URL('default', 'show_store'))}}
+        <div id="doreview" class="stack">{{=A('Write a review', _class='btn btn-primary btn-lg outline', _href=URL('default', 'show_store'))}}
     </div>
         </div>
 

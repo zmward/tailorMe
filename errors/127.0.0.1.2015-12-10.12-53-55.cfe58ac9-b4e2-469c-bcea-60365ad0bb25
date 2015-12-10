@@ -1,0 +1,828 @@
+(dp1
+S'output'
+p2
+S"<type 'exceptions.TypeError'> __init__() got an unexpected keyword argument 'fake_migrate'"
+p3
+sS'layer'
+p4
+S'/Users/Zach/PycharmProjects/web2py-class/applications/tailorMe/models/tables.py'
+p5
+sS'code'
+p6
+S'#########################################################################\n## Define your tables below; for example\n##\n## >>> db.define_table(\'mytable\',Field(\'myfield\',\'string\'))\n##\n## Fields can be \'string\',\'text\',\'password\',\'integer\',\'double\',\'boolean\'\n##       \'date\',\'time\',\'datetime\',\'blob\',\'upload\', \'reference TABLENAME\'\n## There is an implicit \'id integer autoincrement\' field\n## Consult manual for more options, validators, etc.\n##\n## More API examples for controllers:\n##\n## >>> db.mytable.insert(myfield=\'value\')\n## >>> rows=db(db.mytable.myfield==\'value\').select(db.mytable.ALL)\n## >>> for row in rows: print row.id, row.myfield\n#########################################################################\n\nfrom datetime import datetime\n\n# This is a table for all users.\ndb.define_table(\'people\',\n    Field(\'user_id\', db.auth_user, default=auth.user_id),\n    Field(\'name\', required=True),\n    Field(\'description\', \'text\'),\n    )\n\ndb.people.id.readable = False\ndb.people.user_id.readable = False\ndb.people.description.represent = lambda v, r: DIV(v, _class="msg_content")\n\n\n# Here is a table for messages.\ndb.define_table(\'messages\',\n    Field(\'user0\', db.auth_user),\n    Field(\'user1\', db.auth_user),\n    Field(\'sender\',  db.auth_user, default=auth.user_id),\n    Field(\'msg_time\', \'datetime\', default=datetime.utcnow()),\n    Field(\'msg_id\', \'text\')) # Stored as a string\n\ndb.messages.user0.readable = db.messages.user0.writable = False\ndb.messages.user1.readable = db.messages.user1.writable = False\ndb.messages.msg_time.label = "Time"\ndb.messages.msg_id.label = "Message"\ndb.messages.msg_id.represent = lambda v, r: get_text(v)\n\ndef get_text(v):\n    r = db2.textblob(v)\n    return \'\' if r is None else r.mytext\n\n# Table for big chunks of text.\ndb2.define_table(\'textblob\',\n    Field(\'mytext\', \'text\'),\n    )\n\n\n#------------------------------\n# Homework 3 stuff\n#------------------------------\n\ndb.define_table( \'person\',\n                 Field(\'user_id\', db.auth_user),\n                 Field( \'name\', required=True),\n                 )\n\ndb.define_table(\'board\',\n                 Field( \'board_author\', db.auth_user, default=auth.user_id),\n                 Field(\'board_name\', required=True),\n)\ndb.board.id.readable = db.board.id.writable = False\ndb.board.board_author.readable = db.board.board_author.writable=False\n\n\ndb.define_table( \'post\',\n                 Field(\'post_author\', db.auth_user, default=auth.user_id),\n                 Field(\'board_id\', \'reference board\'),\n                 Field(\'title\' ),\n                 Field(\'description\', \'text\'),\n)\ndb.post.id.readable = db.post.id.writable = False\ndb.post.post_author.readable = db.post.post_author.writable=False\ndb.post.board_id.readable = db.post.board_id.writable=False\n\ndb.post.board_id.on_delete = "SET NULL"\n\n\n#----------------------------------\n# Tailor me stuff\n\ndb.define_table(\'store\',\n                Field(\'store_author\', db.auth_user, default=auth.user_id, fake_migrate=True),\n                Field(\'store_name\', required=True, fake_migrate=True),\n)\n\n\ndb.store.store_author.readable = db.store.store_author.writable = False\ndb.store.id.readable = db.store.id.writable = False\n\n\ndb.define_table(\'review\',\n                Field(\'author\', db.auth_user, default=auth.user_id ),\n                Field(\'store_id\', \'reference store\'),\n                Field(\'Tops\', \'boolean\', default=False),\n                Field(\'FT\', label=\'Fit\', requires=IS_IN_SET([\'1\', \'2\', \'3\', \'4\', \'5\']), default=3),\n                Field(\'CT\', label=\'Cut\', requires=IS_IN_SET([\'1\', \'2\', \'3\', \'4\', \'5\']), default=3),\n                Field(\'QT\', label=\'Quality\', requires=IS_IN_SET([\'1\', \'2\', \'3\', \'4\', \'5\']), default=3),\n                Field(\'Bottoms\', \'boolean\', default=False),\n                Field(\'FB\', label=\'Fit\', requires=IS_IN_SET([\'1\', \'2\', \'3\', \'4\', \'5\']), default=3),\n                Field(\'CB\', label=\'Cut\', requires=IS_IN_SET([\'1\', \'2\', \'3\', \'4\', \'5\']), default=3),\n                Field(\'QB\', label=\'Quality\', requires=IS_IN_SET([\'1\', \'2\', \'3\', \'4\', \'5\']), default=3),\n                Field(\'Dress\', \'boolean\', default=False),\n                Field(\'FD\', label=\'Fit\', requires=IS_IN_SET([\'1\', \'2\', \'3\', \'4\', \'5\']), default=3),\n                Field(\'CD\', label=\'Cut\', requires=IS_IN_SET([\'1\', \'2\', \'3\', \'4\', \'5\']), default=3),\n                Field(\'QD\', label=\'Quality\', requires=IS_IN_SET([\'1\', \'2\', \'3\', \'4\', \'5\']), default=3),\n                Field(\'Shoes\', \'boolean\', default=False),\n                Field(\'Outerwear\', \'boolean\', default=False),\n                Field(\'Intimates\', \'boolean\', default=False),\n\n                Field(\'Fit\', requires=IS_IN_SET([\'1\', \'2\', \'3\', \'4\', \'5\']), default=3),\n                Field(\'Cut\', requires=IS_IN_SET([\'1\', \'2\', \'3\', \'4\', \'5\']), default=3),\n                Field(\'Quality\', requires=IS_IN_SET([\'1\', \'2\', \'3\', \'4\', \'5\']), default=3),\n                Field(\'review\', \'text\'),\n                Field(\'This_is_image\', \'boolean\', default=False),\n)\n\n\ndb.review.store_id.on_delete = "SET NULL"\ndb.review.store_id.readable = db.review.store_id.writable = False\ndb.review.author.readable = db.review.author.writable = False\n\n#-------------------------\n# Testing messure tables\n#-------------------------\n\n\n\ndb.define_table(\'Measure\',\n                Field(\'author\', db.auth_user, default=auth.user_id ),\n                Field(\'height\', requires=IS_IN_SET([\'less than 5 foot 4 inches\', \'5 foot 4 inches -> 5 foot 9 inches\', \'taller than 5 food 9 inches\'])),\n                Field(\'head\', requires=IS_IN_SET([\'< 56cm\', \'56 - 57cm\', \'> 57cm\'])),\n                Field(\'neck\', requires=IS_IN_SET([\'< 15 inches\', \'15 - 16 inches\', \'> 16 inches\'])),\n                Field(\'chest\', requires=IS_IN_SET([\'< 16 inches\', \'16 - 18 inches\', \'19 - 21 inches\', \'22 - 24 inches\', \'> 24 inches\'])),\n                Field(\'waist\', requires=IS_IN_SET([\'< 24 inches\', \'24 - 26 inches\', \'27 - 29 inches\', \'30 - 32 inches\', \'33 - 35 inches\', \'> 35 inches\'])),\n                Field(\'shoulder\', requires=IS_IN_SET([\'< 18 inches\', \'18 - 20.125 inches\', \'> 20.125 inches\'])),\n                Field(\'hip\', requires=IS_IN_SET([\'< 38.625 inches\', \'38.625 - 41 inches \', \'41 - 45 inches\', \'> 45 inches\'])),\n                Field(\'wrist\', requires=IS_IN_SET([\'< 5.5 inches\', \'5.5 - 6.5 inches\', \'6.5 - 7.5 inches\', \'> 7.5 inches\'])),\n                Field(\'biceps\', requires=IS_IN_SET([\'< 11.75 inches\', \'11.75 - 14 inches\', \'14 - 16.25 inches\', \'> 16.25 inches\'])),\n                Field(\'forearm\', requires=IS_IN_SET([\'< 9.25 inches\', \'9.25 - 11 inches\', \'11 - 12.5 inches\', \'> 12.5\'])),\n                Field(\'arm_length\', requires=IS_IN_SET([\'< 43cm\', \'43 - 46cm\', \'47 - 49.5cm\', \'> 49.5cm\'])),\n                Field(\'inseam\', requires=IS_IN_SET([\'< 26.5 inches\', \'26.5 - 28 inches\', \'29 - 30 inches\', \'31 - 32 inches\', \'> 32 inches\'])),\n                Field(\'thigh\', requires=IS_IN_SET([\'< 18 inches\', \'18 - 24 inches\', \'25 - 27 inches\', \'28 - 30 inches\', \'> 30 inches\'])),\n                Field(\'calf\', requires=IS_IN_SET([\'< 11 inches\', \'11 - 13 inches\', \'14 - 16 inches\', \'17 - 19 inches\', \'> 19 inches\'])),\n                Field(\'ankle\', requires=IS_IN_SET([\'< 7 inches\', \'7 - 8.25 inches\', \'8.5 - 9.75 inches\', \'10 - 11.5 inches\', \'> 11.5 inches\', \'6\', \'7\'])),\n                )\n\ndb.Measure.author.readable = db.Measure.author.writable = False\n\ndb.define_table(\'Measure2\',\n                Field(\'author\', db.auth_user, default=auth.user_id ),\n                Field(\'height\', requires=IS_IN_SET([\'petite\', \'regular\', \'tall\', \'4\', \'5\', \'6\', \'7\'])),\n                Field(\'head\', requires=IS_IN_SET([\'petite\', \'regular\', \'tall\', \'4\', \'5\', \'6\', \'7\'])),\n                Field(\'neck\', requires=IS_IN_SET([\'petite\', \'regular\', \'tall\', \'4\', \'5\', \'6\', \'7\'])),\n                Field(\'chest\', requires=IS_IN_SET([\'petite\', \'regular\', \'tall\', \'4\', \'5\', \'6\', \'7\'])),\n                Field(\'waist\', requires=IS_IN_SET([\'petite\', \'regular\', \'tall\', \'4\', \'5\', \'6\', \'7\'])),\n                Field(\'shoulder\', requires=IS_IN_SET([\'petite\', \'regular\', \'tall\', \'4\', \'5\', \'6\', \'7\'])),\n                Field(\'hip\', requires=IS_IN_SET([\'petite\', \'regular\', \'tall\', \'4\', \'5\', \'6\', \'7\'])),\n                Field(\'wrist\', requires=IS_IN_SET([\'petite\', \'regular\', \'tall\', \'4\', \'5\', \'6\', \'7\'])),\n                Field(\'biceps\', requires=IS_IN_SET([\'petite\', \'regular\', \'tall\', \'4\', \'5\', \'6\', \'7\'])),\n                Field(\'forearm\', requires=IS_IN_SET([\'petite\', \'regular\', \'tall\', \'4\', \'5\', \'6\', \'7\'])),\n                Field(\'arm_length\', requires=IS_IN_SET([\'petite\', \'regular\', \'tall\', \'4\', \'5\', \'6\', \'7\'])),\n                Field(\'inseam\', requires=IS_IN_SET([\'petite\', \'regular\', \'tall\', \'4\', \'5\', \'6\', \'7\'])),\n                Field(\'thigh\', requires=IS_IN_SET([\'petite\', \'regular\', \'tall\', \'4\', \'5\', \'6\', \'7\'])),\n                Field(\'calf\', requires=IS_IN_SET([\'petite\', \'regular\', \'tall\', \'4\', \'5\', \'6\', \'7\'])),\n                Field(\'ankle\', requires=IS_IN_SET([\'petite\', \'regular\', \'tall\', \'4\', \'5\', \'6\', \'7\'])),\n                )\n'
+p7
+sS'snapshot'
+p8
+(dp9
+S'exception'
+p10
+(dp11
+S'__hash__'
+p12
+S"<method-wrapper '__hash__' of exceptions.TypeError object>"
+p13
+sS'__setattr__'
+p14
+S"<method-wrapper '__setattr__' of exceptions.TypeError object>"
+p15
+sS'__reduce_ex__'
+p16
+S'<built-in method __reduce_ex__ of exceptions.TypeError object>'
+p17
+sS'__getslice__'
+p18
+S"<method-wrapper '__getslice__' of exceptions.TypeError object>"
+p19
+sS'__getitem__'
+p20
+S"<method-wrapper '__getitem__' of exceptions.TypeError object>"
+p21
+sS'__setstate__'
+p22
+S'<built-in method __setstate__ of exceptions.TypeError object>'
+p23
+sS'args'
+p24
+S'("__init__() got an unexpected keyword argument \'fake_migrate\'",)'
+p25
+sS'__reduce__'
+p26
+S'<built-in method __reduce__ of exceptions.TypeError object>'
+p27
+sS'__str__'
+p28
+S"<method-wrapper '__str__' of exceptions.TypeError object>"
+p29
+sS'__format__'
+p30
+S'<built-in method __format__ of exceptions.TypeError object>'
+p31
+sS'__getattribute__'
+p32
+S"<method-wrapper '__getattribute__' of exceptions.TypeError object>"
+p33
+sS'__class__'
+p34
+S"<type 'exceptions.TypeError'>"
+p35
+sS'__unicode__'
+p36
+S'<built-in method __unicode__ of exceptions.TypeError object>'
+p37
+sS'__delattr__'
+p38
+S"<method-wrapper '__delattr__' of exceptions.TypeError object>"
+p39
+sS'__subclasshook__'
+p40
+S'<built-in method __subclasshook__ of type object>'
+p41
+sS'__repr__'
+p42
+S"<method-wrapper '__repr__' of exceptions.TypeError object>"
+p43
+sS'__dict__'
+p44
+S'{}'
+p45
+sS'__sizeof__'
+p46
+S'<built-in method __sizeof__ of exceptions.TypeError object>'
+p47
+sS'__doc__'
+p48
+S"'Inappropriate argument type.'"
+p49
+sS'__init__'
+p50
+S"<method-wrapper '__init__' of exceptions.TypeError object>"
+p51
+sS'__new__'
+p52
+S'<built-in method __new__ of type object>'
+p53
+ssS'evalue'
+p54
+S"__init__() got an unexpected keyword argument 'fake_migrate'"
+p55
+sS'request'
+p56
+cgluon.html
+XML_unpickle
+p57
+(S's*^\x00\x00<div><table><tr><td style="font-weight:bold;vertical-align:top;">ajax</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">application</td><td style="vertical-align:top;">:</td><td><div>tailorMe</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">args</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cid</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">client</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">controller</td><td style="vertical-align:top;">:</td><td><div>default</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cookies</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">session_id_admin</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-6380ff90-fa70-4cea-a1f8-ad86de26c533<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_tailorme</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-e405e3a2-8ffc-46fd-91d0-47d17a52e32e<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_welcome</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-64887f21-a38e-425f-9a7c-0a9e539c4923<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">env</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">HTTP_ACCEPT</td><td style="vertical-align:top;">:</td><td><div>text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_ACCEPT_ENCODING</td><td style="vertical-align:top;">:</td><td><div>gzip, deflate, sdch</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_ACCEPT_LANGUAGE</td><td style="vertical-align:top;">:</td><td><div>en-US,en;q=0.8</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_CONNECTION</td><td style="vertical-align:top;">:</td><td><div>keep-alive</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_COOKIE</td><td style="vertical-align:top;">:</td><td><div>session_id_welcome=127.0.0.1-64887f21-a38e-425f-9a7c-0a9e539c4923; session_id_tailorme=127.0.0.1-e405e3a2-8ffc-46fd-91d0-47d17a52e32e; session_id_admin=127.0.0.1-6380ff90-fa70-4cea-a1f8-ad86de26c533</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_HOST</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1:8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_REFERER</td><td style="vertical-align:top;">:</td><td><div>http://127.0.0.1:8000/admin/default/site</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_UPGRADE_INSECURE_REQUESTS</td><td style="vertical-align:top;">:</td><td><div>1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_USER_AGENT</td><td style="vertical-align:top;">:</td><td><div>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.80 Safari/537.36</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">PATH_INFO</td><td style="vertical-align:top;">:</td><td><div>/tailorMe/default/index</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">QUERY_STRING</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">REMOTE_ADDR</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">REMOTE_PORT</td><td style="vertical-align:top;">:</td><td><div>50580</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">REQUEST_METHOD</td><td style="vertical-align:top;">:</td><td><div>GET</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SCRIPT_NAME</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_NAME</td><td style="vertical-align:top;">:</td><td><div>dhcp-169-233-191-227.cruznet.ucsc.edu</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_PORT</td><td style="vertical-align:top;">:</td><td><div>8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_PROTOCOL</td><td style="vertical-align:top;">:</td><td><div>HTTP/1.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_SOFTWARE</td><td style="vertical-align:top;">:</td><td><div>Rocket 1.2.6</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">app_folders</td><td style="vertical-align:top;">:</td><td><div>set([&#x27;/Users/Zach/PycharmProjects/web2py-class/applications/welcome/&#x27;, &#x27;/Users/Zach/PycharmProjects/web2py-class/applications/admin/&#x27;, &#x27;/Users/Zach/PycharmProjects/web2py-class/applications/tailorMe/&#x27;, &#x27;/Users/Zach/PycharmProjects/web2py-class/applications/tailorme/&#x27;])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">applications_parent</td><td style="vertical-align:top;">:</td><td><div>/Users/Zach/PycharmProjects/web2py-class</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_args</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_options</td><td style="vertical-align:top;">:</td><td><div>&lt;Values at 0x104d70248: {&#x27;verbose&#x27;: False, &#x27;ip&#x27;: &#x27;127.0.0.1&#x27;, &#x27;debuglevel&#x27;: 30, &#x27;with_scheduler&#x27;: False, &#x27;ips&#x27;: [&#x27;169.233.191.227&#x27;], &#x27;shutdown_timeout&#x27;: 5, &#x27;taskbar&#x27;: False, &#x27;with_coverage&#x27;: False, &#x27;scheduler_groups&#x27;: None, &#x27;port&#x27;: 8000, &#x27;maxthreads&#x27;: None, &#x27;softcron&#x27;: False, &#x27;server_name&#x27;: &#x27;dhcp-169-233-191-227.cruznet.ucsc.edu&#x27;, &#x27;bpython&#x27;: False, &#x27;nogui&#x27;: False, &#x27;pid_filename&#x27;: &#x27;httpserver.pid&#x27;, &#x27;print_errors&#x27;: False, &#x27;extcron&#x27;: False, &#x27;runcron&#x27;: False, &#x27;run_system_tests&#x27;: False, &#x27;test&#x27;: None, &#x27;folder&#x27;: &#x27;/Users/Zach/PycharmProjects/web2py-class&#x27;, &#x27;config&#x27;: &#x27;&#x27;, &#x27;minthreads&#x27;: None, &#x27;shell&#x27;: None, &#x27;run&#x27;: &#x27;&#x27;, &#x27;log_filename&#x27;: &#x27;httpserver.log&#x27;, &#x27;profiler_dir&#x27;: None, &#x27;args&#x27;: [&#x27;&#x27;], &#x27;socket_timeout&#x27;: 5, &#x27;ssl_ca_certificate&#x27;: None, &#x27;scheduler&#x27;: None, &#x27;interfaces&#x27;: None, &#x27;ssl_private_key&#x27;: &#x27;&#x27;, &#x27;gae&#x27;: None, &#x27;password&#x27;: &#x27;&lt;ask&gt;&#x27;, &#x27;request_queue_size&#x27;: 5, &#x27;ssl_certificate&#x27;: &#x27;&#x27;, &#x27;cronjob&#x27;: False, &#x27;numthreads&#x27;: None, &#x27;quiet&#x27;: False, &#x27;import_models&#x27;: False, &#x27;timeout&#x27;: 10, &#x27;plain&#x27;: False, &#x27;nobanner&#x27;: False}&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">db_sessions</td><td style="vertical-align:top;">:</td><td><div>set([])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">debugging</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">gluon_parent</td><td style="vertical-align:top;">:</td><td><div>/Users/Zach/PycharmProjects/web2py-class</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_accept</td><td style="vertical-align:top;">:</td><td><div>text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_accept_encoding</td><td style="vertical-align:top;">:</td><td><div>gzip, deflate, sdch</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_accept_language</td><td style="vertical-align:top;">:</td><td><div>en-US,en;q=0.8</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_connection</td><td style="vertical-align:top;">:</td><td><div>keep-alive</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_cookie</td><td style="vertical-align:top;">:</td><td><div>session_id_welcome=127.0.0.1-64887f21-a38e-425f-9a7c-0a9e539c4923; session_id_tailorme=127.0.0.1-e405e3a2-8ffc-46fd-91d0-47d17a52e32e; session_id_admin=127.0.0.1-6380ff90-fa70-4cea-a1f8-ad86de26c533</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_host</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1:8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_referer</td><td style="vertical-align:top;">:</td><td><div>http://127.0.0.1:8000/admin/default/site</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_upgrade_insecure_requests</td><td style="vertical-align:top;">:</td><td><div>1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_user_agent</td><td style="vertical-align:top;">:</td><td><div>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.80 Safari/537.36</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_jython</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_pypy</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_source</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">local_hosts</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>dhcp-169-233-191-227.cruznet.ucsc.edu</div></td></tr><tr><td><div>::1</div></td></tr><tr><td><div>::ffff:127.0.0.1</div></td></tr><tr><td><div>127.0.0.1</div></td></tr><tr><td><div>169.233.191.227</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path_info</td><td style="vertical-align:top;">:</td><td><div>/tailorMe/default/index</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">query_string</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">remote_addr</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">remote_port</td><td style="vertical-align:top;">:</td><td><div>50580</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">request_method</td><td style="vertical-align:top;">:</td><td><div>GET</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">request_uri</td><td style="vertical-align:top;">:</td><td><div>/tailorMe/default/index</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">script_name</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_name</td><td style="vertical-align:top;">:</td><td><div>dhcp-169-233-191-227.cruznet.ucsc.edu</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_port</td><td style="vertical-align:top;">:</td><td><div>8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_protocol</td><td style="vertical-align:top;">:</td><td><div>HTTP/1.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_software</td><td style="vertical-align:top;">:</td><td><div>Rocket 1.2.6</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_path</td><td style="vertical-align:top;">:</td><td><div>/Users/Zach/PycharmProjects/web2py-class</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_version</td><td style="vertical-align:top;">:</td><td><div>2.12.3-stable+timestamp.2015.08.18.19.14.07</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.errors</td><td style="vertical-align:top;">:</td><td><div>&lt;open file &#x27;&lt;stderr&gt;&#x27;, mode &#x27;w&#x27; at 0x103d9e1e0&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.file_wrapper</td><td style="vertical-align:top;">:</td><td><div>&lt;class wsgiref.util.FileWrapper at 0x104ac7e20&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.input</td><td style="vertical-align:top;">:</td><td><div>&lt;socket._fileobject object at 0x10b22c3d0&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.multiprocess</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.multithread</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.run_once</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.url_scheme</td><td style="vertical-align:top;">:</td><td><div>http</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.version</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>1</div></td></tr><tr><td><div>0</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_errors</td><td style="vertical-align:top;">:</td><td><div>&lt;open file &#x27;&lt;stderr&gt;&#x27;, mode &#x27;w&#x27; at 0x103d9e1e0&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_file_wrapper</td><td style="vertical-align:top;">:</td><td><div>&lt;class wsgiref.util.FileWrapper at 0x104ac7e20&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_input</td><td style="vertical-align:top;">:</td><td><div>&lt;socket._fileobject object at 0x10b22c3d0&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_multiprocess</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_multithread</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_run_once</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_url_scheme</td><td style="vertical-align:top;">:</td><td><div>http</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_version</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>1</div></td></tr><tr><td><div>0</div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">extension</td><td style="vertical-align:top;">:</td><td><div>html</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">folder</td><td style="vertical-align:top;">:</td><td><div>/Users/Zach/PycharmProjects/web2py-class/applications/tailorMe/</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">function</td><td style="vertical-align:top;">:</td><td><div>index</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">global_settings</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">app_folders</td><td style="vertical-align:top;">:</td><td><div>set([&#x27;/Users/Zach/PycharmProjects/web2py-class/applications/welcome/&#x27;, &#x27;/Users/Zach/PycharmProjects/web2py-class/applications/admin/&#x27;, &#x27;/Users/Zach/PycharmProjects/web2py-class/applications/tailorMe/&#x27;, &#x27;/Users/Zach/PycharmProjects/web2py-class/applications/tailorme/&#x27;])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">applications_parent</td><td style="vertical-align:top;">:</td><td><div>/Users/Zach/PycharmProjects/web2py-class</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_args</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_options</td><td style="vertical-align:top;">:</td><td><div>&lt;Values at 0x104d70248: {&#x27;verbose&#x27;: False, &#x27;ip&#x27;: &#x27;127.0.0.1&#x27;, &#x27;debuglevel&#x27;: 30, &#x27;with_scheduler&#x27;: False, &#x27;ips&#x27;: [&#x27;169.233.191.227&#x27;], &#x27;shutdown_timeout&#x27;: 5, &#x27;taskbar&#x27;: False, &#x27;with_coverage&#x27;: False, &#x27;scheduler_groups&#x27;: None, &#x27;port&#x27;: 8000, &#x27;maxthreads&#x27;: None, &#x27;softcron&#x27;: False, &#x27;server_name&#x27;: &#x27;dhcp-169-233-191-227.cruznet.ucsc.edu&#x27;, &#x27;bpython&#x27;: False, &#x27;nogui&#x27;: False, &#x27;pid_filename&#x27;: &#x27;httpserver.pid&#x27;, &#x27;print_errors&#x27;: False, &#x27;extcron&#x27;: False, &#x27;runcron&#x27;: False, &#x27;run_system_tests&#x27;: False, &#x27;test&#x27;: None, &#x27;folder&#x27;: &#x27;/Users/Zach/PycharmProjects/web2py-class&#x27;, &#x27;config&#x27;: &#x27;&#x27;, &#x27;minthreads&#x27;: None, &#x27;shell&#x27;: None, &#x27;run&#x27;: &#x27;&#x27;, &#x27;log_filename&#x27;: &#x27;httpserver.log&#x27;, &#x27;profiler_dir&#x27;: None, &#x27;args&#x27;: [&#x27;&#x27;], &#x27;socket_timeout&#x27;: 5, &#x27;ssl_ca_certificate&#x27;: None, &#x27;scheduler&#x27;: None, &#x27;interfaces&#x27;: None, &#x27;ssl_private_key&#x27;: &#x27;&#x27;, &#x27;gae&#x27;: None, &#x27;password&#x27;: &#x27;&lt;ask&gt;&#x27;, &#x27;request_queue_size&#x27;: 5, &#x27;ssl_certificate&#x27;: &#x27;&#x27;, &#x27;cronjob&#x27;: False, &#x27;numthreads&#x27;: None, &#x27;quiet&#x27;: False, &#x27;import_models&#x27;: False, &#x27;timeout&#x27;: 10, &#x27;plain&#x27;: False, &#x27;nobanner&#x27;: False}&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">db_sessions</td><td style="vertical-align:top;">:</td><td><div>set([])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">debugging</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">gluon_parent</td><td style="vertical-align:top;">:</td><td><div>/Users/Zach/PycharmProjects/web2py-class</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_jython</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_pypy</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_source</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">local_hosts</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>dhcp-169-233-191-227.cruznet.ucsc.edu</div></td></tr><tr><td><div>::1</div></td></tr><tr><td><div>::ffff:127.0.0.1</div></td></tr><tr><td><div>127.0.0.1</div></td></tr><tr><td><div>169.233.191.227</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_version</td><td style="vertical-align:top;">:</td><td><div>2.12.3-stable+timestamp.2015.08.18.19.14.07</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_https</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_local</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_restful</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_sheduler</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_shell</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">now</td><td style="vertical-align:top;">:</td><td><div>datetime.datetime(2015, 12, 10, 12, 53, 55, 121682)</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">raw_args</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">raw_extension</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">url</td><td style="vertical-align:top;">:</td><td><div>/tailorMe/default/index</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">utcnow</td><td style="vertical-align:top;">:</td><td><div>datetime.datetime(2015, 12, 10, 20, 53, 55, 121690)</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi</td><td style="vertical-align:top;">:</td><td><div>&lt;gluon.main.LazyWSGI object at 0x10b661e90&gt;</div></td></tr></table></div>'
+tRp58
+sS'frames'
+p59
+(lp60
+(dp61
+S'file'
+p62
+S'/Users/Zach/PycharmProjects/web2py-class/gluon/restricted.py'
+p63
+sS'dump'
+p64
+(dp65
+S'environment'
+p66
+S"{'A': <class 'gluon.html.A'>, 'ANY_OF': <class 'gluon.validators.ANY_OF'>, 'ASSIGNJS': <function ASSIGNJS>, 'AppConfig': <function AppConfig>, 'Auth': <class 'gluon.tools.Auth'>, 'B': <class 'gluon.html.B'>, 'BEAUTIFY': <class 'gluon.html.BEAUTIFY'>, 'BODY': <class 'gluon.html.BODY'>, 'BR': <class 'gluon.html.BR'>, 'BUTTON': <class 'gluon.html.BUTTON'>, ...}"
+p67
+sS'ccode'
+p68
+S'<code object <module> at 0x10b468ab0, file "/Use...applications/tailorMe/models/tables.py", line 18>'
+p69
+ssS'lnum'
+p70
+I227
+sS'lines'
+p71
+(dp72
+I224
+S'            ccode = code'
+p73
+sI225
+S'        else:'
+p74
+sI226
+S'            ccode = compile2(code, layer)'
+p75
+sI227
+S'        exec ccode in environment'
+p76
+sI228
+S'    except HTTP:'
+p77
+sI229
+S'        raise'
+p78
+sI230
+S'    except RestrictedError:'
+p79
+sI231
+S'        # do not encapsulate (obfuscate) the original RestrictedError'
+p80
+sI222
+S'    try:'
+p81
+sI223
+S'        if isinstance(code, types.CodeType):'
+p82
+ssS'call'
+p83
+S'(code="################################################...\'tall\', \'4\', \'5\', \'6\', \'7\'])),\\n                )\\n", environment={\'A\': <class \'gluon.html.A\'>, \'ANY_OF\': <class \'gluon.validators.ANY_OF\'>, \'ASSIGNJS\': <function ASSIGNJS>, \'AppConfig\': <function AppConfig>, \'Auth\': <class \'gluon.tools.Auth\'>, \'B\': <class \'gluon.html.B\'>, \'BEAUTIFY\': <class \'gluon.html.BEAUTIFY\'>, \'BODY\': <class \'gluon.html.BODY\'>, \'BR\': <class \'gluon.html.BR\'>, \'BUTTON\': <class \'gluon.html.BUTTON\'>, ...}, layer=\'/Users/Zach/PycharmProjects/web2py-class/applications/tailorMe/models/tables.py\')'
+p84
+sS'func'
+p85
+S'restricted'
+p86
+sa(dp87
+g62
+S'/Users/Zach/PycharmProjects/web2py-class/applications/tailorMe/models/tables.py'
+p88
+sg64
+(dp89
+S'default'
+p90
+S'undefined'
+p91
+sS'builtinTrue'
+p92
+S'True'
+p93
+sS'db'
+p94
+S'<DAL uri="sqlite://storage.sqlite">'
+p95
+sS'fake_migrate'
+p96
+g91
+sS'auth'
+p97
+S'<gluon.tools.Auth object>'
+p98
+sS'Field'
+p99
+S"<class 'pydal.objects.Field'>"
+p100
+sS'db.auth_user'
+p101
+S'<Table auth_user (id,first_name,last_name,email,...stration_key,reset_password_key,registration_id)>'
+p102
+sS'auth.user_id'
+p103
+S'None'
+p104
+ssg70
+I90
+sg71
+(dp105
+I85
+S''
+sI86
+S'#----------------------------------'
+p106
+sI87
+S'# Tailor me stuff'
+p107
+sI88
+S''
+sI89
+S"db.define_table('store',"
+p108
+sI90
+S"                Field('store_author', db.auth_user, default=auth.user_id, fake_migrate=True),"
+p109
+sI91
+S"                Field('store_name', required=True, fake_migrate=True),"
+p110
+sI92
+S')'
+sI93
+S''
+sI94
+S''
+ssg83
+S'()'
+p111
+sg85
+S'<module>'
+p112
+sasS'pyver'
+p113
+S'Python 2.7.10: /System/Library/Frameworks/Python.framework/Versions/2.7/Resources/Python.app/Contents/MacOS/Python (prefix: /System/Library/Frameworks/Python.framework/Versions/2.7)'
+p114
+sS'session'
+p115
+g57
+(S's\x1a\x00\x00\x00<div><table></table></div>'
+tRp116
+sS'etype'
+p117
+S"<type 'exceptions.TypeError'>"
+p118
+sS'date'
+p119
+S'Thu Dec 10 12:53:55 2015'
+p120
+sS'response'
+p121
+g57
+(S'so>\x00\x00<div><table><tr><td style="font-weight:bold;vertical-align:top;">body</td><td style="vertical-align:top;">:</td><td><div>&lt;cStringIO.StringO object at 0x10b4b65e0&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cookies</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">session_id_tailorme</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-1741b58f-fea5-4c2e-9b29-55131448d9ce<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div>/</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">delimiters</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>{{</div></td></tr><tr><td><div>}}</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">files</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">flash</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">form_label_separator</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">formstyle</td><td style="vertical-align:top;">:</td><td><div>bootstrap3_inline</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">generic_patterns</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>*</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">google_analytics_id</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">headers</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">X-Powered-By</td><td style="vertical-align:top;">:</td><td><div>web2py</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">logo</td><td style="vertical-align:top;">:</td><td><div><a class="navbar-brand" href="http://www.web2py.com/" id="web2py-logo"><b>web<span>2</span>py</b>&trade;&nbsp;</a></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">menu</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div><table><tr><td><div>Home</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/tailorMe/default/index</div></td></tr><tr><td><div><table></table></div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>My Sites</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/site</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>This App</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>#</div></td></tr><tr><td><div><table><tr><td><div><table><tr><td><div>Design</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/design/tailorMe</div></td></tr></table></div></td></tr><tr><td><div><li class="divider"></li></div></td></tr><tr><td><div><table><tr><td><div>Controller</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/edit/tailorMe/controllers/default.py</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>View</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/edit/tailorMe/views/default/index.html</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>DB Model</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/edit/tailorMe/models/db.py</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Menu Model</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/edit/tailorMe/models/menu.py</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Config.ini</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/edit/tailorMe/private/appconfig.ini</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Layout</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/edit/tailorMe/views/layout.html</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Stylesheet</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/edit/tailorMe/static/css/web2py-bootstrap3.css</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Database</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/tailorMe/appadmin/index</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Errors</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/errors/tailorMe</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>About</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/about/tailorMe</div></td></tr></table></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>web2py.com</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>#</div></td></tr><tr><td><div><table><tr><td><div><table><tr><td><div>Download</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/examples/default/download</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Support</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/examples/default/support</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Demo</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://web2py.com/demo_admin</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Quick Examples</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://web2py.com/examples/default/examples</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>FAQ</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://web2py.com/AlterEgo</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Videos</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/examples/default/videos/</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Free Applications</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://web2py.com/appliances</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Plugins</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://web2py.com/plugins</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Recipes</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://web2pyslices.com/</div></td></tr></table></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Documentation</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>#</div></td></tr><tr><td><div><table><tr><td><div><table><tr><td><div>Online book</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book</div></td></tr></table></div></td></tr><tr><td><div><li class="divider"></li></div></td></tr><tr><td><div><table><tr><td><div>Preface</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/00</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Introduction</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/01</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Python</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/02</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Overview</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/03</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>The Core</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/04</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>The Views</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/05</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Database</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/06</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Forms and Validators</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/07</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Email and SMS</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/08</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Access Control</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/09</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Services</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/10</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Ajax Recipes</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/11</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Components and Plugins</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/12</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Deployment Recipes</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/13</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Other Recipes</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/14</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Helping web2py</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book/default/chapter/15</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Buy web2py\'s book</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://stores.lulu.com/web2py</div></td></tr></table></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Community</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>None</div></td></tr><tr><td><div><table><tr><td><div><table><tr><td><div>Groups</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/examples/default/usergroups</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Twitter</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://twitter.com/web2py</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Live Chat</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://webchat.freenode.net/?channels=web2py</div></td></tr></table></div></td></tr></table></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">meta</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">author</td><td style="vertical-align:top;">:</td><td><div>Your Name &lt;you@example.com&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">description</td><td style="vertical-align:top;">:</td><td><div>a cool new app</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">generator</td><td style="vertical-align:top;">:</td><td><div>Web2py Web Framework</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">keywords</td><td style="vertical-align:top;">:</td><td><div>web2py, python, framework</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">models_to_run</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>^\\w+\\.py$</div></td></tr><tr><td><div>^default/\\w+\\.py$</div></td></tr><tr><td><div>^default/index/\\w+\\.py$</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">postprocessing</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_client</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_cookie_compression_level</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_cookie_expires</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_cookie_key</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_data_name</td><td style="vertical-align:top;">:</td><td><div>session_data_tailorme</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_file</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_filename</td><td style="vertical-align:top;">:</td><td><div>/Users/Zach/PycharmProjects/web2py-class/applications/tailorMe/sessions/127.0.0.1-1741b58f-fea5-4c2e-9b29-55131448d9ce</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_hash</td><td style="vertical-align:top;">:</td><td><div>c0762cbf4baf7f9af97c051e7fcb8083</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-1741b58f-fea5-4c2e-9b29-55131448d9ce</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_name</td><td style="vertical-align:top;">:</td><td><div>session_id_tailorme</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_masterapp</td><td style="vertical-align:top;">:</td><td><div>tailorMe</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_new</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_storage_type</td><td style="vertical-align:top;">:</td><td><div>file</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">status</td><td style="vertical-align:top;">:</td><td><div>200</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">subtitle</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">title</td><td style="vertical-align:top;">:</td><td><div>Tailorme</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">view</td><td style="vertical-align:top;">:</td><td><div>default/index.html</div></td></tr></table></div>'
+tRp122
+sS'locals'
+p123
+(dp124
+S'Service'
+p125
+S"<class 'gluon.tools.Service'>"
+p126
+sS'FORMAT'
+p127
+S"'%(asctime)s %(levelname)s %(process)s %(thread)s %(funcName)s():%(lineno)d %(message)s'"
+p128
+sS'OBJECT'
+p129
+S"<class 'gluon.html.OBJECT'>"
+p130
+sS'SQLDB'
+p131
+S"<class 'pydal.base.DAL'>"
+p132
+sg115
+S'<Storage {}>'
+p133
+sS'LINK'
+p134
+S"<class 'gluon.html.LINK'>"
+p135
+sS'BR'
+p136
+S"<class 'gluon.html.BR'>"
+p137
+sS'local_import'
+p138
+S'<function <lambda>>'
+p139
+sS'OPTGROUP'
+p140
+S"<class 'gluon.html.OPTGROUP'>"
+p141
+sS'LI'
+p142
+S"<class 'gluon.html.LI'>"
+p143
+sS'PRE'
+p144
+S"<class 'gluon.html.PRE'>"
+p145
+sS'IS_INT_IN_RANGE'
+p146
+S"<class 'gluon.validators.IS_INT_IN_RANGE'>"
+p147
+sS'db2'
+p148
+S'<DAL uri="sqlite://storage2.sqlite">'
+p149
+sS'get_text'
+p150
+S'<function get_text>'
+p151
+sS'IS_LOWER'
+p152
+S"<class 'gluon.validators.IS_LOWER'>"
+p153
+sS'IS_STRONG'
+p154
+S"<class 'gluon.validators.IS_STRONG'>"
+p155
+sS'cache'
+p156
+S'<gluon.cache.Cache object>'
+p157
+sS'IS_IN_DB'
+p158
+S"<class 'gluon.validators.IS_IN_DB'>"
+p159
+sS'TAG'
+p160
+S'<gluon.html.__TAG__ object>'
+p161
+sS'SQLField'
+p162
+S"<class 'pydal.objects.Field'>"
+p163
+sS'mail'
+p164
+S'<gluon.tools.Mail object>'
+p165
+sS'logger'
+p166
+S'<logging.Logger object>'
+p167
+sS'BODY'
+p168
+S"<class 'gluon.html.BODY'>"
+p169
+sS'IS_DATE_IN_RANGE'
+p170
+S"<class 'gluon.validators.IS_DATE_IN_RANGE'>"
+p171
+sS'TH'
+p172
+S"<class 'gluon.html.TH'>"
+p173
+sS'URL'
+p174
+S'<function URL>'
+p175
+sS'__file__'
+p176
+S"'/Users/Zach/PycharmProjects/web2py-class/applications/tailorMe/models/tables.py'"
+p177
+sS'db'
+p178
+S'<DAL uri="sqlite://storage.sqlite">'
+p179
+sS'auth'
+p180
+S'<gluon.tools.Auth object>'
+p181
+sS'P'
+S"<class 'gluon.html.P'>"
+p182
+sS'TFOOT'
+p183
+S"<class 'gluon.html.TFOOT'>"
+p184
+sS'XHTML'
+p185
+S"<class 'gluon.html.XHTML'>"
+p186
+sS'datetime'
+p187
+S"<type 'datetime.datetime'>"
+p188
+sS'ON'
+p189
+g93
+sS'OL'
+p190
+S"<class 'gluon.html.OL'>"
+p191
+sS'TEXTAREA'
+p192
+S"<class 'gluon.html.TEXTAREA'>"
+p193
+sS'MENU'
+p194
+S"<class 'gluon.html.MENU'>"
+p195
+sS'LOAD'
+p196
+S'<function LOAD>'
+p197
+sS'CODE'
+p198
+S"<class 'gluon.html.CODE'>"
+p199
+sS'HTTP'
+p200
+S"<class 'gluon.http.HTTP'>"
+p201
+sS'HR'
+p202
+S"<class 'gluon.html.HR'>"
+p203
+sS'IS_DATETIME'
+p204
+S"<class 'gluon.validators.IS_DATETIME'>"
+p205
+sS'HEAD'
+p206
+S"<class 'gluon.html.HEAD'>"
+p207
+sS'LABEL'
+p208
+S"<class 'gluon.html.LABEL'>"
+p209
+sS'CLEANUP'
+p210
+S"<class 'gluon.validators.CLEANUP'>"
+p211
+sS'plugins'
+p212
+S'<gluon.tools.PluginManager object>'
+p213
+sS'SELECT'
+p214
+S"<class 'gluon.html.SELECT'>"
+p215
+sS'CENTER'
+p216
+S"<class 'gluon.html.CENTER'>"
+p217
+sS'Auth'
+p218
+S"<class 'gluon.tools.Auth'>"
+p219
+sS'DEVELOPMENT_MENU'
+p220
+g93
+sS'__builtins__'
+p221
+S"{'ArithmeticError': <type 'exceptions.ArithmeticError'>, 'AssertionError': <type 'exceptions.AssertionError'>, 'AttributeError': <type 'exceptions.AttributeError'>, 'BaseException': <type 'exceptions.BaseException'>, 'BufferError': <type 'exceptions.BufferError'>, 'BytesWarning': <type 'exceptions.BytesWarning'>, 'DeprecationWarning': <type 'exceptions.DeprecationWarning'>, 'EOFError': <type 'exceptions.EOFError'>, 'Ellipsis': Ellipsis, 'EnvironmentError': <type 'exceptions.EnvironmentError'>, ...}"
+p222
+sS'HTML'
+p223
+S"<class 'gluon.html.HTML'>"
+p224
+sS'SQLFORM'
+p225
+S"<class 'gluon.sqlhtml.SQLFORM'>"
+p226
+sS'EM'
+p227
+S"<class 'gluon.html.EM'>"
+p228
+sS'redirect'
+p229
+S'<function redirect>'
+p230
+sS'FIELDSET'
+p231
+S"<class 'gluon.html.FIELDSET'>"
+p232
+sS'IS_EQUAL_TO'
+p233
+S"<class 'gluon.validators.IS_EQUAL_TO'>"
+p234
+sS'embed64'
+p235
+S'<function embed64>'
+p236
+sS'IS_LIST_OF'
+p237
+S"<class 'gluon.validators.IS_LIST_OF'>"
+p238
+sS'__name__'
+p239
+S"'__restricted__'"
+p240
+sS'EMBED'
+p241
+S"<class 'gluon.html.EMBED'>"
+p242
+sS'_'
+S'<function _>'
+p243
+sS'FORM'
+p244
+S"<class 'gluon.html.FORM'>"
+p245
+sS'logging'
+p246
+S"<module 'logging' from '/System/Library/Framewor...Versions/2.7/lib/python2.7/logging/__init__.pyc'>"
+p247
+sS'myconf'
+p248
+S"{'forms': {'formstyle': 'bootstrap3_inline', 'se...'you@gmail.com', 'server': 'smtp.gmail.com:587'}}"
+p249
+sS'H2'
+p250
+S"<class 'gluon.html.H2'>"
+p251
+sS'H3'
+p252
+S"<class 'gluon.html.H3'>"
+p253
+sS'AppConfig'
+p254
+S'<function AppConfig>'
+p255
+sS'H1'
+p256
+S"<class 'gluon.html.H1'>"
+p257
+sS'H6'
+p258
+S"<class 'gluon.html.H6'>"
+p259
+sS'H4'
+p260
+S"<class 'gluon.html.H4'>"
+p261
+sS'H5'
+p262
+S"<class 'gluon.html.H5'>"
+p263
+sS'UL'
+p264
+S"<class 'gluon.html.UL'>"
+p265
+sS'IS_UPPER'
+p266
+S"<class 'gluon.validators.IS_UPPER'>"
+p267
+sS'xmlescape'
+p268
+S'<function xmlescape>'
+p269
+sS'IS_TIME'
+p270
+S"<class 'gluon.validators.IS_TIME'>"
+p271
+sS'OPTION'
+p272
+S"<class 'gluon.html.OPTION'>"
+p273
+sS'TITLE'
+p274
+S"<class 'gluon.html.TITLE'>"
+p275
+sS'CRYPT'
+p276
+S"<class 'gluon.validators.CRYPT'>"
+p277
+sS'IS_EMPTY_OR'
+p278
+S"<class 'gluon.validators.IS_EMPTY_OR'>"
+p279
+sS'MARKMIN'
+p280
+S"<class 'gluon.html.MARKMIN'>"
+p281
+sS'INPUT'
+p282
+S"<class 'gluon.html.INPUT'>"
+p283
+sS'STRONG'
+p284
+S"<class 'gluon.html.STRONG'>"
+p285
+sS'COL'
+p286
+S"<class 'gluon.html.COL'>"
+p287
+sS'service'
+p288
+S'<gluon.tools.Service object>'
+p289
+sS'SCRIPT'
+p290
+S"<class 'gluon.html.SCRIPT'>"
+p291
+sS'TABLE'
+p292
+S"<class 'gluon.html.TABLE'>"
+p293
+sS'IS_IPV4'
+p294
+S"<class 'gluon.validators.IS_IPV4'>"
+p295
+sS'IS_LENGTH'
+p296
+S"<class 'gluon.validators.IS_LENGTH'>"
+p297
+sS'IS_IPV6'
+p298
+S"<class 'gluon.validators.IS_IPV6'>"
+p299
+sS'XML'
+p300
+S"<class 'gluon.html.XML'>"
+p301
+sS'B'
+S"<class 'gluon.html.B'>"
+p302
+sS'IMG'
+p303
+S"<class 'gluon.html.IMG'>"
+p304
+sS'SQLTABLE'
+p305
+S"<class 'gluon.sqlhtml.SQLTABLE'>"
+p306
+sS'IS_MATCH'
+p307
+S"<class 'gluon.validators.IS_MATCH'>"
+p308
+sS'IS_ALPHANUMERIC'
+p309
+S"<class 'gluon.validators.IS_ALPHANUMERIC'>"
+p310
+sS'SPAN'
+p311
+S"<class 'gluon.html.SPAN'>"
+p312
+sS'IS_JSON'
+p313
+S"<class 'gluon.validators.IS_JSON'>"
+p314
+sS'IS_IPADDRESS'
+p315
+S"<class 'gluon.validators.IS_IPADDRESS'>"
+p316
+sS'IS_SLUG'
+p317
+S"<class 'gluon.validators.IS_SLUG'>"
+p318
+sS'BEAUTIFY'
+p319
+S"<class 'gluon.html.BEAUTIFY'>"
+p320
+sS'META'
+p321
+S"<class 'gluon.html.META'>"
+p322
+sS'BUTTON'
+p323
+S"<class 'gluon.html.BUTTON'>"
+p324
+sS'IS_DATE'
+p325
+S"<class 'gluon.validators.IS_DATE'>"
+p326
+sS'IS_EMAIL'
+p327
+S"<class 'gluon.validators.IS_EMAIL'>"
+p328
+sS'IS_NOT_EMPTY'
+p329
+S"<class 'gluon.validators.IS_NOT_EMPTY'>"
+p330
+sS'IS_FLOAT_IN_RANGE'
+p331
+S"<class 'gluon.validators.IS_FLOAT_IN_RANGE'>"
+p332
+sS'TBODY'
+p333
+S"<class 'gluon.html.TBODY'>"
+p334
+sS'CAT'
+p335
+S"<class 'gluon.html.CAT'>"
+p336
+sS'Field'
+p337
+S"<class 'pydal.objects.Field'>"
+p338
+sS'IS_LIST_OF_EMAILS'
+p339
+S"<class 'gluon.validators.IS_LIST_OF_EMAILS'>"
+p340
+sS'DIV'
+p341
+S"<class 'gluon.html.DIV'>"
+p342
+sS'LEGEND'
+p343
+S"<class 'gluon.html.LEGEND'>"
+p344
+sS'COLGROUP'
+p345
+S"<class 'gluon.html.COLGROUP'>"
+p346
+sS'DAL'
+p347
+S"<class 'pydal.base.DAL'>"
+p348
+sS'ASSIGNJS'
+p349
+S'<function ASSIGNJS>'
+p350
+sS'TR'
+p351
+S"<class 'gluon.html.TR'>"
+p352
+sS'__package__'
+p353
+S'None'
+p354
+sS'IFRAME'
+p355
+S"<class 'gluon.html.IFRAME'>"
+p356
+sS'TD'
+p357
+S"<class 'gluon.html.TD'>"
+p358
+sS'PluginManager'
+p359
+S"<class 'gluon.tools.PluginManager'>"
+p360
+sS'IS_URL'
+p361
+S"<class 'gluon.validators.IS_URL'>"
+p362
+sS'A'
+S"<class 'gluon.html.A'>"
+p363
+sS'STYLE'
+p364
+S"<class 'gluon.html.STYLE'>"
+p365
+sS'IS_DATETIME_IN_RANGE'
+p366
+S"<class 'gluon.validators.IS_DATETIME_IN_RANGE'>"
+p367
+sS'IS_IMAGE'
+p368
+S"<class 'gluon.validators.IS_IMAGE'>"
+p369
+sS'I'
+S"<class 'gluon.html.I'>"
+p370
+sS'sys'
+p371
+S"<module 'sys' (built-in)>"
+p372
+sS'IS_NOT_IN_DB'
+p373
+S"<class 'gluon.validators.IS_NOT_IN_DB'>"
+p374
+sg121
+S"<Storage {'body': <cStringIO.StringO object at 0...> at 0x10b4dec80>, 'view': 'default/index.html'}>"
+p375
+sS'THEAD'
+p376
+S"<class 'gluon.html.THEAD'>"
+p377
+sS'ANY_OF'
+p378
+S"<class 'gluon.validators.ANY_OF'>"
+p379
+sS'IS_NULL_OR'
+p380
+S"<class 'gluon.validators.IS_EMPTY_OR'>"
+p381
+sg56
+S"<Storage {'_vars': <Storage {}>, 'function': 'in...rmProjects/web2py-class/applications/tailorMe/'}>"
+p382
+sS'IS_EXPR'
+p383
+S"<class 'gluon.validators.IS_EXPR'>"
+p384
+sS'IS_IN_SET'
+p385
+S"<class 'gluon.validators.IS_IN_SET'>"
+p386
+sS'IS_UPLOAD_FILENAME'
+p387
+S"<class 'gluon.validators.IS_UPLOAD_FILENAME'>"
+p388
+sS'IS_DECIMAL_IN_RANGE'
+p389
+S"<class 'gluon.validators.IS_DECIMAL_IN_RANGE'>"
+p390
+sS'TT'
+p391
+S"<class 'gluon.html.TT'>"
+p392
+sS'T'
+S'<gluon.languages.translator object>'
+p393
+sssS'traceback'
+p394
+S'Traceback (most recent call last):\n  File "/Users/Zach/PycharmProjects/web2py-class/gluon/restricted.py", line 227, in restricted\n    exec ccode in environment\n  File "/Users/Zach/PycharmProjects/web2py-class/applications/tailorMe/models/tables.py", line 90, in <module>\n    Field(\'store_author\', db.auth_user, default=auth.user_id, fake_migrate=True),\nTypeError: __init__() got an unexpected keyword argument \'fake_migrate\'\n'
+p395
+s.

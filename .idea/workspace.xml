@@ -2,14 +2,74 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6078b455-379d-4b1d-851b-c802ff2801cf" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sessions/140/092/127.0.0.1-c9fb7205-53e4-49b7-b271-449fec3c0b9d" afterPath="$PROJECT_DIR$/sessions/140/092/127.0.0.1-c9fb7205-53e4-49b7-b271-449fec3c0b9d" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/errors/127.0.0.1.2015-12-02.16-25-09.39e6987a-fb93-4239-ad66-9aa3279b3311" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/errors/127.0.0.1.2015-12-02.16-34-05.473eab4f-f689-4e04-a15c-85f35416a63e" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/errors/127.0.0.1.2015-12-02.16-34-47.f0cc8f81-b283-4715-ac2f-6cc8088eb392" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/errors/127.0.0.1.2015-12-02.16-49-29.969da1d3-416b-431e-bfb5-cb723d1e335e" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/errors/127.0.0.1.2015-12-02.16-57-40.4f03f34a-87c1-4002-89f6-93b984d6db45" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/errors/127.0.0.1.2015-12-02.16-58-42.662e7fca-c49e-4b9e-bead-d68a4c24c7d9" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/errors/127.0.0.1.2015-12-02.16-58-44.ce694098-3892-4590-9cad-18626099d810" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/errors/127.0.0.1.2015-12-02.17-07-14.cbaa43d7-8e3c-4127-a29e-3fe13ad14e1d" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/errors/127.0.0.1.2015-12-05.17-59-17.82f28449-c3b3-4f42-9721-6104a77d9cb2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/errors/127.0.0.1.2015-12-05.17-59-20.53ba3334-0829-4596-bfc4-eb7428bdc05c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/errors/127.0.0.1.2015-12-05.18-03-04.dce2bee0-2984-47d7-8946-39b636264232" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/errors/127.0.0.1.2015-12-05.18-03-12.3d04c141-a847-4a1b-bdac-215082853a24" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/errors/127.0.0.1.2015-12-05.18-03-34.5f8444f8-3634-4a81-aa2e-e9a3a3aa6a9c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/errors/127.0.0.1.2015-12-05.18-04-09.629aa770-70fd-46c6-9bd2-849a30c591c5" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/errors/127.0.0.1.2015-12-05.18-57-36.7079f04d-49ee-4af2-8933-73d4f3b07ef5" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/errors/127.0.0.1.2015-12-05.19-11-05.3c174b8c-1308-464b-b0c8-c6c069d22a99" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/errors/127.0.0.1.2015-12-05.19-26-55.5324a432-11f9-4d45-9915-98771b8b3c14" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/errors/127.0.0.1.2015-12-05.19-27-23.f3d2b6e2-4b33-4cbb-8a2a-b469621e727c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/errors/127.0.0.1.2015-12-05.19-28-22.f8af7b95-8715-4bfe-8aba-594294f6a35d" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/errors/127.0.0.1.2015-12-05.19-31-06.f85aeeab-6892-4048-9bde-7675704e160f" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/errors/127.0.0.1.2015-12-05.19-31-33.39ca407c-d54a-4195-bb35-114b238d4532" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/errors/127.0.0.1.2015-12-05.19-32-04.f5306299-3f6a-4512-a436-f5fdf468b342" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/errors/127.0.0.1.2015-12-05.19-41-39.84a635ba-540c-413c-beb9-7f82adf6aa0b" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/errors/127.0.0.1.2015-12-05.19-41-43.bdfd8761-8a2a-4378-bd22-403ddb3e1d05" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/errors/127.0.0.1.2015-12-05.19-45-51.a0998043-696c-4f9e-b4de-01eca76e83e7" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/errors/127.0.0.1.2015-12-05.19-46-55.4add67a6-5d68-423f-b923-1f2a88b75fb6" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/errors/127.0.0.1.2015-12-08.11-32-20.6364cd73-b263-4f0b-95a2-a8cf5897b0f8" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/errors/127.0.0.1.2015-12-08.11-32-31.7e79d400-3601-45c4-ae65-46694346519d" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/errors/127.0.0.1.2015-12-08.11-32-33.76005ff5-fd44-430c-9c54-3e10eea60afc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/errors/127.0.0.1.2015-12-08.11-34-18.4fbe1bd6-dbfc-4307-8326-93d9cec84706" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/errors/127.0.0.1.2015-12-08.11-35-00.f974b451-65ce-43bc-9b43-361bdda74185" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/errors/127.0.0.1.2015-12-08.13-49-20.df1edbe0-9c72-4ab0-a751-7f65aeb65174" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/errors/127.0.0.1.2015-12-08.13-51-33.2b6945a2-bb9d-4c71-8c2e-fb1d69f85177" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/errors/127.0.0.1.2015-12-08.13-52-33.a0007569-7cc1-4ac7-8b21-debc789d74e7" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/errors/127.0.0.1.2015-12-08.13-52-36.7af60fab-b733-4d48-baa8-10f9f06111b5" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/errors/127.0.0.1.2015-12-08.13-54-59.c47f0bdd-a542-464e-8372-af60f868a8cb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/errors/127.0.0.1.2015-12-08.13-57-14.f16a70c2-097d-4534-9839-8787a0e71923" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/errors/127.0.0.1.2015-12-08.18-04-00.d952fa8e-afc9-4796-a6f1-35ebd108d8db" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/errors/127.0.0.1.2015-12-08.18-04-14.889368cb-0c24-4777-946c-3f15cc0c6d20" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/errors/127.0.0.1.2015-12-08.18-04-16.0b24587b-7d56-43f9-8edd-7e60fd3828f9" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/errors/127.0.0.1.2015-12-09.14-58-00.461e2f7a-5904-41f1-bf29-26fe5d03e606" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/errors/127.0.0.1.2015-12-09.15-03-28.981a97fc-54ec-47a7-a587-0519f7171931" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/errors/127.0.0.1.2015-12-09.15-20-14.b3f2e036-2bb0-4ab5-ac79-a872b3950bd1" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/errors/127.0.0.1.2015-12-09.15-20-18.bdb9822a-5184-461c-8f90-3815b106267d" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/errors/127.0.0.1.2015-12-09.15-26-26.20831cb2-ee46-4281-8659-823a9fa0fa96" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/errors/127.0.0.1.2015-12-09.15-42-10.1811589d-ece0-401f-86e1-bfe106774b0a" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/errors/127.0.0.1.2015-12-09.15-42-41.79c0a04a-e806-4524-82ff-8a4e951b08a4" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/sessions/039/1ee/127.0.0.1-3472348b-2bdd-4a62-b39e-5f2f891a9db5" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/sessions/05e/052/127.0.0.1-7723943c-c187-459b-b433-6b0191693301" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/sessions/077/1d3/127.0.0.1-f596996a-b7ad-4de7-8345-f3f808f7ec90" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/sessions/07b/18c/127.0.0.1-f3093e7c-45e7-45bb-9134-fbcd3f60b408" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/sessions/0a4/054/127.0.0.1-41ec9ad8-ff0c-46b7-b1a1-a29cf7ed80ca" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/sessions/0a8/14f/127.0.0.1-fcec3bbe-1680-4123-bcae-37a8c9ffb03c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/sessions/0f6/0b9/127.0.0.1-481a5a09-bb03-46ee-af94-0a41aebecd99" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/sessions/0f7/123/127.0.0.1-ba0cc991-8f3f-47f1-9aef-82ce3355feca" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/sessions/140/092/127.0.0.1-c9fb7205-53e4-49b7-b271-449fec3c0b9d" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/sessions/15b/124/127.0.0.1-c4d11283-2cd6-4ba1-90d6-d5e141e1ae25" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/sessions/15f/0cc/127.0.0.1-2c876713-9f59-4c5a-a7b5-8295f9c91c91" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/sessions/163/0cb/127.0.0.1-6b9c2b91-dc42-4750-95d6-45758c5f4ca7" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/sessions/18a/0c8/127.0.0.1-9299373a-e8c4-44a0-a685-72e474a1786a" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/databases/storage.sqlite" afterPath="$PROJECT_DIR$/databases/storage.sqlite" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/databases/storage2.sqlite" afterPath="$PROJECT_DIR$/databases/storage2.sqlite" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/databases/c8b669d15150d7109e5f7ab36744a5b7_Measure.table" afterPath="$PROJECT_DIR$/databases/c8b669d15150d7109e5f7ab36744a5b7_Measure.table" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/default/chat.html" afterPath="$PROJECT_DIR$/views/default/chat.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/default.py" afterPath="$PROJECT_DIR$/controllers/default.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/default/index.html" afterPath="$PROJECT_DIR$/views/default/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/default/profile.html" afterPath="$PROJECT_DIR$/views/default/profile.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/default/show_store.html" afterPath="$PROJECT_DIR$/views/default/show_store.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/databases/sql.log" afterPath="$PROJECT_DIR$/databases/sql.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/default/store_details.html" afterPath="$PROJECT_DIR$/views/default/store_details.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/tables.py" afterPath="$PROJECT_DIR$/models/tables.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="tailorMe.iws" />
@@ -24,7 +84,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/tailorMe$tailorMe.coverage" NAME="tailorMe Coverage Results" MODIFIED="1449367400181" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../.." />
+    <SUITE FILE_PATH="coverage/tailorMe$tailorMe.coverage" NAME="tailorMe Coverage Results" MODIFIED="1449779072371" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../.." />
     <SUITE FILE_PATH="coverage/tailorMe$default.coverage" NAME="default Coverage Results" MODIFIED="1448848869760" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../.." />
   </component>
   <component name="CreatePatchCommitExecutor">
@@ -39,50 +99,18 @@
       <file leaf-file-name="default.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controllers/default.py">
           <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-8.888889">
+              <caret line="168" column="4" selection-start-line="168" selection-start-column="4" selection-end-line="168" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="chat.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/default/chat.html">
+          <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="87" column="55" selection-start-line="87" selection-start-column="55" selection-end-line="87" selection-end-column="55" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="add_review.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/default/add_review.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.25">
-              <caret line="35" column="24" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="show_store.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/default/show_store.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.125">
-              <caret line="31" column="8" selection-start-line="31" selection-start-column="2" selection-end-line="31" selection-end-column="8" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#center#1;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="store_edit.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/default/store_edit.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.125">
-              <caret line="34" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/default/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.625">
-              <caret line="20" column="39" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
+              <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -91,40 +119,28 @@
       <file leaf-file-name="profile.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/default/profile.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.875">
-              <caret line="78" column="65" selection-start-line="78" selection-start-column="65" selection-end-line="78" selection-end-column="65" />
-              <folding>
-                <element signature="n#style#0;n#div#1;n#center#1;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="people.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/default/people.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.125">
-              <caret line="28" column="11" selection-start-line="28" selection-start-column="11" selection-end-line="28" selection-end-column="11" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="80" column="52" selection-start-line="80" selection-start-column="52" selection-end-line="80" selection-end-column="52" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="store_details.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/views/default/store_details.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2857143">
-              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tables.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="tables.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/models/tables.py">
           <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.14221218">
+              <caret line="88" column="24" selection-start-line="88" selection-start-column="24" selection-end-line="88" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/default/index.html">
+          <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="130" column="24" selection-start-line="130" selection-start-column="24" selection-end-line="130" selection-end-column="24" />
+              <caret line="50" column="11" selection-start-line="50" selection-start-column="11" selection-end-line="50" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -153,20 +169,20 @@
         <option value="$PROJECT_DIR$/models/db.py" />
         <option value="$PROJECT_DIR$/static/css/myapp.css" />
         <option value="$PROJECT_DIR$/views/layout.html" />
-        <option value="$PROJECT_DIR$/views/default/chat.html" />
         <option value="$PROJECT_DIR$/views/default/user.html" />
         <option value="$PROJECT_DIR$/static/sass/_main.scss" />
-        <option value="$PROJECT_DIR$/views/default/index.html" />
         <option value="$PROJECT_DIR$/views/default/add_store.html" />
         <option value="$PROJECT_DIR$/views/default/store_edit.html" />
         <option value="$PROJECT_DIR$/views/default/doreview.html" />
         <option value="$PROJECT_DIR$/views/default/people.html" />
         <option value="$PROJECT_DIR$/views/default/add_review.html" />
         <option value="$PROJECT_DIR$/views/default/show_store.html" />
+        <option value="$PROJECT_DIR$/views/default/store_details.html" />
+        <option value="$PROJECT_DIR$/views/default/chat.html" />
+        <option value="$PROJECT_DIR$/views/default/index.html" />
         <option value="$PROJECT_DIR$/views/default/profile.html" />
         <option value="$PROJECT_DIR$/controllers/default.py" />
         <option value="$PROJECT_DIR$/models/tables.py" />
-        <option value="$PROJECT_DIR$/views/default/store_details.html" />
       </list>
     </option>
   </component>
@@ -178,10 +194,8 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="7" />
-    <option name="y" value="44" />
     <option name="width" value="1280" />
-    <option name="height" value="733" />
+    <option name="height" value="800" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -207,6 +221,7 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -337,14 +352,13 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../hw3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="recentsLimit" value="5" />
-    <property name="FullScreen" value="false" />
+    <property name="FullScreen" value="true" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
@@ -600,28 +614,28 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="7" y="44" width="1280" height="733" extended-state="0" />
+    <frame x="0" y="0" width="1280" height="800" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2734375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32078314" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2819063" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31967214" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -640,11 +654,117 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/controllers/default.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="248" column="48" selection-start-line="248" selection-start-column="48" selection-end-line="248" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/default/chat.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/default/profile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="80" column="52" selection-start-line="80" selection-start-column="52" selection-end-line="80" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/tables.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="130" column="24" selection-start-line="130" selection-start-column="24" selection-end-line="130" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/default/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="50" column="11" selection-start-line="50" selection-start-column="11" selection-end-line="50" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/default.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="87" column="55" selection-start-line="87" selection-start-column="55" selection-end-line="87" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/default/add_review.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="35" column="24" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/default/show_store.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="31" column="8" selection-start-line="31" selection-start-column="2" selection-end-line="31" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/default/store_edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="34" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/default/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="39" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/default/profile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="78" column="65" selection-start-line="78" selection-start-column="65" selection-end-line="78" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/default/people.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="11" selection-start-line="28" selection-start-column="11" selection-end-line="28" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/default/store_details.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/tables.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="130" column="24" selection-start-line="130" selection-start-column="24" selection-end-line="130" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/models/menu.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -667,7 +787,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="3.9465876">
           <caret line="133" column="7" selection-start-line="133" selection-start-column="7" selection-end-line="133" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -675,7 +794,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -683,15 +801,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.78723407">
           <caret line="103" column="11" selection-start-line="103" selection-start-column="11" selection-end-line="103" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/default/chat.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.625">
-          <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -699,7 +808,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-12.875">
           <caret line="129" column="0" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -707,7 +815,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-11.875">
           <caret line="19" column="10" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -715,7 +822,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.1764708">
           <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -723,82 +829,80 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.375">
           <caret line="22" column="11" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/default/people.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.125">
-          <caret line="28" column="11" selection-start-line="28" selection-start-column="11" selection-end-line="28" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/default/store_edit.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.125">
+        <state vertical-scroll-proportion="0.0">
           <caret line="34" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/default/show_store.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="31" column="8" selection-start-line="31" selection-start-column="2" selection-end-line="31" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/default/add_review.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="35" column="24" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/default/store_details.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36199096">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/default/people.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.32126698">
+          <caret line="28" column="11" selection-start-line="28" selection-start-column="11" selection-end-line="28" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/default/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="50" column="11" selection-start-line="50" selection-start-column="11" selection-end-line="50" selection-end-column="11" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/default/profile.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.875">
-          <caret line="78" column="65" selection-start-line="78" selection-start-column="65" selection-end-line="78" selection-end-column="65" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#center#1;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/default/show_store.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.125">
-          <caret line="31" column="8" selection-start-line="31" selection-start-column="2" selection-end-line="31" selection-end-column="8" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#center#1;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/default/add_review.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.25">
-          <caret line="35" column="24" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="24" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="80" column="52" selection-start-line="80" selection-start-column="52" selection-end-line="80" selection-end-column="52" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/tables.py">
+    <entry file="file://$PROJECT_DIR$/views/default/chat.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="130" column="24" selection-start-line="130" selection-start-column="24" selection-end-line="130" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/default/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.625">
-          <caret line="20" column="39" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
+          <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/controllers/default.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="87" column="55" selection-start-line="87" selection-start-column="55" selection-end-line="87" selection-end-column="55" />
+        <state vertical-scroll-proportion="-8.888889">
+          <caret line="168" column="4" selection-start-line="168" selection-start-column="4" selection-end-line="168" selection-end-column="4" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/default/store_details.html">
+    <entry file="file://$PROJECT_DIR$/models/tables.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2857143">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.14221218">
+          <caret line="88" column="24" selection-start-line="88" selection-start-column="24" selection-end-line="88" selection-end-column="24" />
           <folding />
         </state>
       </provider>
