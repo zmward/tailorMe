@@ -135,7 +135,7 @@ I00
 sg10
 S'id'
 p33
-ssS'waist'
+ssS'neck'
 p34
 (dp35
 g4
@@ -143,7 +143,7 @@ I512
 sg5
 I00
 sg6
-I7
+I5
 sg7
 S'CHAR(512)'
 p36
@@ -206,7 +206,7 @@ sS'type'
 p51
 S'reference profile'
 p52
-ssS'neck'
+ssS'waist'
 p53
 (dp54
 g4
@@ -214,7 +214,7 @@ I512
 sg5
 I00
 sg6
-I5
+I7
 sg7
 S'CHAR(512)'
 p55
@@ -232,15 +232,16 @@ I00
 sg6
 I2
 sg7
-S'CHAR(512)'
+S'INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  '
 p58
 sg9
 I00
 sg10
-g11
-ssS'chest'
+S'reference auth_user'
 p59
-(dp60
+ssS'chest'
+p60
+(dp61
 g4
 I512
 sg5
@@ -249,14 +250,14 @@ sg6
 I6
 sg7
 S'CHAR(512)'
-p61
+p62
 sg9
 I00
 sg10
 g11
 ssS'ankle'
-p62
-(dp63
+p63
+(dp64
 g4
 I512
 sg5
@@ -265,14 +266,14 @@ sg6
 I17
 sg7
 S'CHAR(512)'
-p64
+p65
 sg9
 I00
 sg10
 g11
 ssS'calf'
-p65
-(dp66
+p66
+(dp67
 g4
 I512
 sg5
@@ -281,14 +282,14 @@ sg6
 I16
 sg7
 S'CHAR(512)'
-p67
+p68
 sg9
 I00
 sg10
 g11
 ssS'arm_length'
-p68
-(dp69
+p69
+(dp70
 g4
 I512
 sg5
@@ -297,7 +298,7 @@ sg6
 I13
 sg7
 S'CHAR(512)'
-p70
+p71
 sg9
 I00
 sg10

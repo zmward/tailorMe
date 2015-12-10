@@ -19,7 +19,7 @@
   <div class="container-fluid">
     <div>
       <ul class="nav navbar-nav">
-        <li><a href="index">Home</a></li>
+        <li>{{=A('Home', _href=URL('default', 'index'))}}</li>
         <li>{{=A('Profile', _href=URL('default', 'profile', user_signature=True))}}</li>
         <li><a href="people">Messages</a></li>
       </ul>
@@ -37,8 +37,44 @@
  {{=list_button}}
         {{=add_button}}
 
-{{=form}}
 
+
+<style>
+    div.reviews {
+        float: left;
+        margin: 15px;
+        width: 300px;
+        border: 1px solid #269abc;
+        border-radius: 20px;
+        -webkit-box-shadow: 0px 0px 17px 5px rgba(199,197,199,1);
+        -moz-box-shadow: 0px 0px 17px 5px rgba(199,197,199,1);
+        box-shadow: 0px 0px 17px 5px rgba(199,197,199,1);
+    }
+</style>
+
+ <center>
 {{for review in review:}}
-{{=review.FT}}
+
+    <div class="reviews">
+        <h2>Review</h2>
+        <h3>Tops</h3>
+        <p>Fit: {{=review.FT}}</p>
+        <p>Cut: {{=review.CT}}</p>
+        <p>Quality: {{=review.QT}}</p>
+        <h3>Bottoms</h3>
+        <p>Fit: {{=review.FB}}</p>
+        <p>Cut: {{=review.CB}}</p>
+        <p>Quality: {{=review.QB}}</p>
+        <h3>Dress</h3>
+        <p>Fit: {{=review.FD}}</p>
+        <p>Cut: {{=review.CD}}</p>
+        <p>Quality: {{=review.QD}}</p>
+        <h3>Intimates</h3>
+        <p>Fit: {{=review.Fit}}</p>
+        <p>Cut: {{=review.Cut}}</p>
+        <p>Quality: {{=review.Quality}}</p>
+        <h3>Comments: {{=review.review}}</h3>
+        <hr>
+            </div>
         {{pass}}
+     </center>

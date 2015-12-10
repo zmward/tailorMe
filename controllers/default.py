@@ -5,7 +5,7 @@
 @auth.requires_signature()
 @auth.requires_login()
 def profile():
-    measure_form = SQLFORM(db.Measure2)
+    measure_form = SQLFORM(db.Measure)
     if measure_form.vars.accepted:
         session.flash = "Thank you!"
         redirect(URL('default', index()))
@@ -65,7 +65,7 @@ def add_store(): #was add_store
 
 def show_store():
     store_list = db(db.store).select()
-    add_button = A(' Create New Store', _class='btn btn-success fa fa-plus',
+    add_button = A(' Create New Store', _class='btn btn-primary btn-lg outline fa fa-plus',
                                              _href=URL('default', 'add_store'))
     fit_button =  A(' Create New Fit', _class='btn btn-info fa fa-plus',
                                              _href=URL('default', 'tailor_you'))
@@ -103,7 +103,7 @@ def add_review():
     if form.process().accepted:
         form.vars.store_id = store.id
         session.flash = T("You review has been created!")
-        redirect(URL('default', 'store_details', args=[store.id]))
+        redirect(URL('default', 'store_details', args=[store.id, store.store_name]))
 
     back_button = A(' Cancel', _class='btn btn-primary btn-lg outline fa fa-times',
                     _href=URL('default', 'store_details', args=[store.id]))
