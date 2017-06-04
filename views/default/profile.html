@@ -1,0 +1,95 @@
+{{extend 'layout.html'}}
+
+<center>
+
+<div class="container">
+  <div class="jumbotron">
+    <h1>Profile</h1>
+    <p>This is your profile where you can view your measurements and reviews!</p>
+  </div>
+  <p>Feel free to look at reviews, message other users, or create your own profile!</p>
+  <p></p>
+</div>
+
+{{if auth.user_id is None:}}
+
+       {{else:}}
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div>
+      <ul class="nav navbar-nav">
+        <li><a href="index">Home</a></li>
+        <li class="active">{{=A('Profile', _href=URL('default', 'profile', user_signature=True))}}</li>
+        <li><a href="people">Messages</a></li>
+      </ul>
+        <ul class="nav navbar-nav navbar-right">
+
+        <li><a href="user/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+{{pass}}
+</center>
+
+
+<style>
+#userstuff {
+        float: left;
+        border: 1px solid #269abc;
+        padding: 10px;
+        margin: 20px;
+        border-radius: 10px 10px 10px 10px;
+        width: 400px;
+ }
+
+#profile {
+        float: left;
+  }
+#measurements {
+        float: left;
+        border: 1px solid #269abc;
+        padding: 10px;
+        margin: 20px;
+        border-radius: 15px 15px 15px 15px;
+        -webkit-box-shadow: 0px 0px 17px 5px rgba(199,197,199,1);
+        -moz-box-shadow: 0px 0px 17px 5px rgba(199,197,199,1);
+        box-shadow: 0px 0px 17px 5px rgba(199,197,199,1);
+}
+
+div.stack{
+        width: 400px;
+        border: 1px solid #269abc;
+        padding: 10px;
+        margin: 20px;
+        border-radius: 15px 15px 15px 15px;
+        position: relative;
+        float: left;
+        clear: both;
+        -webkit-box-shadow: 0px 0px 17px 5px rgba(199,197,199,1);
+        -moz-box-shadow: 0px 0px 17px 5px rgba(199,197,199,1);
+        box-shadow: 0px 0px 17px 5px rgba(199,197,199,1);
+    }
+</style>
+
+<center>
+    <div id="profile">
+        <div id="userstuff" class="stack"> <h3>Username</h3></div>
+        <div id="userreview" class="stack"><h3>Your reviews:</h3>
+        </div>
+        <div id="doreview" class="stack">{{=A('Do a review', _class='btn btn-primary btn-lg outline', _href=URL('default', 'show_store'))}}
+    </div>
+        </div>
+
+
+
+
+<div id="measurements" style="width:400px">
+    <h3>Measurements</h3>
+{{=measure_form}}
+</div>
+
+
+
+</center>

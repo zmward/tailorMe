@@ -1,0 +1,1017 @@
+timestamp: 2015-11-30T17:53:50.485343
+CREATE TABLE auth_user(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    first_name CHAR(128),
+    last_name CHAR(128),
+    email CHAR(512),
+    password CHAR(512),
+    registration_key CHAR(512),
+    reset_password_key CHAR(512),
+    registration_id CHAR(512)
+);
+success!
+timestamp: 2015-11-30T17:53:50.488592
+CREATE TABLE auth_group(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    role CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2015-11-30T17:53:50.490034
+CREATE TABLE auth_membership(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE  
+);
+success!
+timestamp: 2015-11-30T17:53:50.491453
+CREATE TABLE auth_permission(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE  ,
+    name CHAR(512),
+    table_name CHAR(512),
+    record_id INTEGER
+);
+success!
+timestamp: 2015-11-30T17:53:50.493614
+CREATE TABLE auth_event(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    time_stamp TIMESTAMP,
+    client_ip CHAR(512),
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    origin CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2015-11-30T17:53:50.495915
+CREATE TABLE auth_cas(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    created_on TIMESTAMP,
+    service CHAR(512),
+    ticket CHAR(512),
+    renew CHAR(1)
+);
+success!
+timestamp: 2015-11-30T17:53:50.501155
+CREATE TABLE people(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    name CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2015-11-30T17:53:50.503231
+CREATE TABLE messages(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user0 INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    user1 INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    sender INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    msg_time TIMESTAMP,
+    msg_id TEXT
+);
+success!
+timestamp: 2015-11-30T17:53:50.505224
+CREATE TABLE textblob(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    mytext TEXT
+);
+success!
+timestamp: 2015-12-05T18:50:54.429682
+CREATE TABLE profile(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    User_name CHAR(512),
+    First_name CHAR(512),
+    Last_name CHAR(512),
+    email CHAR(512),
+    password CHAR(512)
+);
+success!
+timestamp: 2015-12-05T18:50:54.434441
+CREATE TABLE height_table(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES profile (id) ON DELETE CASCADE  ,
+    mess DOUBLE,
+    petite CHAR(1),
+    regular CHAR(1),
+    tall CHAR(1)
+);
+success!
+timestamp: 2015-12-05T18:50:54.437256
+CREATE TABLE head_table(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES profile (id) ON DELETE CASCADE  ,
+    mess DOUBLE,
+    flag1 CHAR(1),
+    flag2 CHAR(1),
+    flag3 CHAR(1)
+);
+success!
+timestamp: 2015-12-05T18:50:54.440621
+CREATE TABLE neck_table(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES profile (id) ON DELETE CASCADE  ,
+    mess DOUBLE,
+    flag1 CHAR(1),
+    flag2 CHAR(1),
+    flag3 CHAR(1)
+);
+success!
+timestamp: 2015-12-05T18:50:54.443736
+CREATE TABLE chest_table(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES profile (id) ON DELETE CASCADE  ,
+    mess DOUBLE,
+    flag1 CHAR(1),
+    flag2 CHAR(1),
+    flag3 CHAR(1),
+    flag4 CHAR(1),
+    flag5 CHAR(1)
+);
+success!
+timestamp: 2015-12-05T18:50:54.446249
+CREATE TABLE waist_table(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES profile (id) ON DELETE CASCADE  ,
+    mess DOUBLE,
+    flag1 CHAR(1),
+    flag2 CHAR(1),
+    flag3 CHAR(1),
+    flag4 CHAR(1),
+    flag5 CHAR(1),
+    flag6 CHAR(1)
+);
+success!
+timestamp: 2015-12-05T18:50:54.449560
+CREATE TABLE sh_table(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES profile (id) ON DELETE CASCADE  ,
+    mess DOUBLE,
+    flag1 CHAR(1),
+    flag2 CHAR(1),
+    flag3 CHAR(1)
+);
+success!
+timestamp: 2015-12-05T18:50:54.452913
+CREATE TABLE hip_table(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES profile (id) ON DELETE CASCADE  ,
+    mess DOUBLE,
+    flag1 CHAR(1),
+    flag2 CHAR(1),
+    flag3 CHAR(1),
+    flag4 CHAR(1)
+);
+success!
+timestamp: 2015-12-05T18:50:54.455696
+CREATE TABLE wrist_table(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES profile (id) ON DELETE CASCADE  ,
+    mess DOUBLE,
+    flag1 CHAR(1),
+    flag2 CHAR(1),
+    flag3 CHAR(1),
+    flag4 CHAR(1)
+);
+success!
+timestamp: 2015-12-05T18:50:54.458626
+CREATE TABLE biceps_table(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES profile (id) ON DELETE CASCADE  ,
+    mess DOUBLE,
+    flag1 CHAR(1),
+    flag2 CHAR(1),
+    flag3 CHAR(1),
+    flag4 CHAR(1)
+);
+success!
+timestamp: 2015-12-05T18:50:54.461062
+CREATE TABLE forearm_table(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES profile (id) ON DELETE CASCADE  ,
+    mess DOUBLE,
+    flag1 CHAR(1),
+    flag2 CHAR(1),
+    flag3 CHAR(1),
+    flag4 CHAR(1)
+);
+success!
+timestamp: 2015-12-05T18:50:54.463664
+CREATE TABLE arm_table(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES profile (id) ON DELETE CASCADE  ,
+    mess DOUBLE,
+    flag1 CHAR(1),
+    flag2 CHAR(1),
+    flag3 CHAR(1),
+    flag4 CHAR(1)
+);
+success!
+timestamp: 2015-12-05T18:50:54.466347
+CREATE TABLE inseam_table(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES profile (id) ON DELETE CASCADE  ,
+    mess DOUBLE,
+    flag1 CHAR(1),
+    flag2 CHAR(1),
+    flag3 CHAR(1),
+    flag4 CHAR(1),
+    flag5 CHAR(1),
+    flag6 CHAR(1),
+    flag7 CHAR(1)
+);
+success!
+timestamp: 2015-12-05T18:50:54.469114
+CREATE TABLE thigh_table(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES profile (id) ON DELETE CASCADE  ,
+    mess DOUBLE,
+    flag1 CHAR(1),
+    flag2 CHAR(1),
+    flag3 CHAR(1),
+    flag4 CHAR(1),
+    flag5 CHAR(1)
+);
+success!
+timestamp: 2015-12-05T18:50:54.471865
+CREATE TABLE calf_table(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES profile (id) ON DELETE CASCADE  ,
+    mess DOUBLE,
+    flag1 CHAR(1),
+    flag2 CHAR(1),
+    flag3 CHAR(1),
+    flag4 CHAR(1),
+    flag5 CHAR(1)
+);
+success!
+timestamp: 2015-12-05T18:50:54.474635
+CREATE TABLE ankle_table(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES profile (id) ON DELETE CASCADE  ,
+    mess DOUBLE,
+    flag1 CHAR(1),
+    flag2 CHAR(1),
+    flag3 CHAR(1),
+    flag4 CHAR(1),
+    flag5 CHAR(1)
+);
+success!
+timestamp: 2015-12-05T18:50:54.478139
+CREATE TABLE Measure(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES profile (id) ON DELETE CASCADE  ,
+    height INTEGER REFERENCES height_table (id) ON DELETE CASCADE  ,
+    head INTEGER REFERENCES neck_table (id) ON DELETE CASCADE  ,
+    neck INTEGER REFERENCES chest_table (id) ON DELETE CASCADE  ,
+    chest INTEGER REFERENCES waist_table (id) ON DELETE CASCADE  ,
+    waist INTEGER REFERENCES height_table (id) ON DELETE CASCADE  ,
+    shoulder INTEGER REFERENCES sh_table (id) ON DELETE CASCADE  ,
+    hip INTEGER REFERENCES hip_table (id) ON DELETE CASCADE  ,
+    wrist INTEGER REFERENCES wrist_table (id) ON DELETE CASCADE  ,
+    biceps INTEGER REFERENCES biceps_table (id) ON DELETE CASCADE  ,
+    forearm INTEGER REFERENCES forearm_table (id) ON DELETE CASCADE  ,
+    arm_length INTEGER REFERENCES arm_table (id) ON DELETE CASCADE  ,
+    inseam INTEGER REFERENCES inseam_table (id) ON DELETE CASCADE  ,
+    thigh INTEGER REFERENCES thigh_table (id) ON DELETE CASCADE  ,
+    calf INTEGER REFERENCES calf_table (id) ON DELETE CASCADE  ,
+    ankle INTEGER REFERENCES ankle_table (id) ON DELETE CASCADE  
+);
+success!
+timestamp: 2015-12-05T18:50:54.481954
+CREATE TABLE Store(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    Name CHAR(512),
+    Street CHAR(512),
+    City CHAR(512),
+    St CHAR(512),
+    review_id CHAR(512)
+);
+success!
+timestamp: 2015-12-05T18:50:54.486291
+CREATE TABLE User_review(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    author INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    Store INTEGER REFERENCES Store (id) ON DELETE CASCADE  ,
+    review TEXT
+);
+success!
+timestamp: 2015-12-08T11:34:18.917841
+CREATE TABLE person(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    name CHAR(512)
+);
+success!
+timestamp: 2015-12-08T11:34:18.924821
+CREATE TABLE board(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    board_author INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    board_name CHAR(512)
+);
+success!
+timestamp: 2015-12-08T11:34:18.927068
+CREATE TABLE post(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    post_author INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    board_id INTEGER REFERENCES board (id) ON DELETE CASCADE  ,
+    title CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2015-12-08T11:34:18.931596
+ALTER TABLE store ADD store_name CHAR(512);
+timestamp: 2015-12-08T11:34:18.932896
+ALTER TABLE store ADD store_author INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ;
+success!
+timestamp: 2015-12-08T11:34:18.938780
+CREATE TABLE review(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    author INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    store_id INTEGER REFERENCES store (id) ON DELETE CASCADE  ,
+    Tops CHAR(1),
+    FT CHAR(512),
+    CT CHAR(512),
+    QT CHAR(512),
+    Bottoms CHAR(1),
+    FB CHAR(512),
+    CB CHAR(512),
+    QB CHAR(512),
+    Dress CHAR(1),
+    FD CHAR(512),
+    CD CHAR(512),
+    QD CHAR(512),
+    Shoes CHAR(1),
+    Outerwear CHAR(1),
+    Intimates CHAR(1),
+    Fit CHAR(512),
+    Cut CHAR(512),
+    Quality CHAR(512),
+    review TEXT,
+    This_is_image CHAR(1)
+);
+success!
+timestamp: 2015-12-08T11:34:18.945958
+ALTER TABLE Measure ADD author CHAR(512);
+success!
+timestamp: 2015-12-08T11:34:18.954301
+CREATE TABLE Measure2(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    author INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    height CHAR(512),
+    head CHAR(512),
+    neck CHAR(512),
+    chest CHAR(512),
+    waist CHAR(512),
+    shoulder CHAR(512),
+    hip CHAR(512),
+    wrist CHAR(512),
+    biceps CHAR(512),
+    forearm CHAR(512),
+    arm_length CHAR(512),
+    inseam CHAR(512),
+    thigh CHAR(512),
+    calf CHAR(512),
+    ankle CHAR(512)
+);
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!

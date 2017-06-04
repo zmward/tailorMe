@@ -1,0 +1,38 @@
+{{extend 'layout.html'}}
+
+
+
+<center>
+
+<div class="container">
+  <div class="jumbotron">
+    <h1>Review</h1>
+    <p>Review your items by category, fit, cut, and quality!</p>
+  </div>
+  <p>Feel free to look at reviews, message other users, or create your own profile!</p>
+  <p></p>
+</div>
+
+{{if auth.user_id is None:}}
+
+       {{else:}}
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div>
+      <ul class="nav navbar-nav">
+        <li><a href="index">Home</a></li>
+        <li>{{=A('Profile', _href=URL('default', 'profile', user_signature=True))}}</li>
+        <li><a href="people">Messages</a></li>
+      </ul>
+        <ul class="nav navbar-nav navbar-right">
+
+        <li><a href="user/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+{{pass}}
+</center>
+
+        {{=form}}

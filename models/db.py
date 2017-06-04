@@ -18,9 +18,11 @@ myconf = AppConfig(reload=True)
 if not request.env.web2py_runtime_gae:
     ## if NOT running on Google App Engine use SQLite or other DB
     db = DAL(myconf.take('db.uri'), pool_size=myconf.take('db.pool_size', cast=int), check_reserved=['all'])
+    db2 = DAL(myconf.take('db.uri2'), pool_size=myconf.take('db.pool_size', cast=int), check_reserved=['all'])
 else:
     ## connect to Google BigTable (optional 'google:datastore://namespace')
     db = DAL('google:datastore+ndb')
+    db2 = db
     ## store sessions and tickets there
     session.connect(request, response, db=db)
     ## or store session in Memcache, Redis, etc.
@@ -71,22 +73,13 @@ auth.settings.registration_requires_verification = False
 auth.settings.registration_requires_approval = False
 auth.settings.reset_password_requires_verification = True
 
-#########################################################################
-## Define your tables below (or better in another model file) for example
-##
-## >>> db.define_table('mytable',Field('myfield','string'))
-##
-## Fields can be 'string','text','password','integer','double','boolean'
-##       'date','time','datetime','blob','upload', 'reference TABLENAME'
-## There is an implicit 'id integer autoincrement' field
-## Consult manual for more options, validators, etc.
-##
-## More API examples for controllers:
-##
-## >>> db.mytable.insert(myfield='value')
-## >>> rows=db(db.mytable.myfield=='value').select(db.mytable.ALL)
-## >>> for row in rows: print row.id, row.myfield
-#########################################################################
+######################
+# Logging
+import logging, sys
+FORMAT = "%(asctime)s %(levelname)s %(process)s %(thread)s %(funcName)s():%(lineno)d %(message)s"
+logging.basicConfig(stream=sys.stderr)
+logger = logging.getLogger(request.application)
+logger.setLevel(logging.INFO)
 
-## after defining tables, uncomment below to enable auditing
-# auth.enable_record_versioning(db)
+# Let's log the request.
+logger.info("====> Request: %r %r %r %r" % (request.env.request_method, request.env.path_info, request.args, request.vars))

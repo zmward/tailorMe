@@ -1,0 +1,66 @@
+{{extend 'layout.html'}}
+
+
+
+<center>
+
+<div class="container">
+  <div class="jumbotron">
+    <h1>Stores</h1>
+    <p>Here is a list of stores</p>
+  </div>
+  <p>Add stores, view stores, and add reviews!</p>
+  <p></p>
+</div>
+
+{{if auth.user_id is None:}}
+
+       {{else:}}
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div>
+      <ul class="nav navbar-nav">
+        <li><a href="index">Home</a></li>
+        <li>{{=A('Profile', _href=URL('default', 'profile', user_signature=True))}}</li>
+        <li><a href="people">Messages</a></li>
+      </ul>
+        <ul class="nav navbar-nav navbar-right">
+
+        <li><a href="user/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+{{pass}}
+</center>
+{{=add_button}}
+
+<style>
+    #store_list {
+        float: left;
+        color: black;
+        padding: 15px;
+        margin: 10px;
+        border-radius: 20px;
+        -webkit-box-shadow: 0px 0px 17px 5px rgba(199,197,199,1);
+        -moz-box-shadow: 0px 0px 17px 5px rgba(199,197,199,1);
+        box-shadow: 0px 0px 17px 5px rgba(199,197,199,1);
+    }
+</style>
+
+ <center>
+{{for store in store_list:}}
+
+<div style="width:100%;">
+<div id="store_list">
+  <h2>{{=A(store.store_name, _href=URL('default', 'store_details', args=[store.id, store.store_name]))}}</h2>
+        {{=A('', _class='fa fa-pencil', _href=URL('default', 'store_edit', args=[store.id]))}}
+        {{=A('', _class='fa fa-trash-o', _href=URL('default', 'delete_store', args=[store.id]))}}
+
+</div>
+</div>
+
+ {{pass}}
+
+</center>
